@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
@@ -7,7 +9,8 @@ public class MessageBox : MonoBehaviour
     public static MessageBox instance;
 
     public GameObject box;
-    public TextMeshProUGUI textMP;
+    public TextMeshProUGUI title;
+    public TextMeshProUGUI body;
     public Slider slider;
 
     protected float startTime;
@@ -15,12 +18,14 @@ public class MessageBox : MonoBehaviour
 
     public class Message
     {
-        public string text;
+        public string title;
+        public Queue<string> sentences;
         public float timer = 5f;
 
-        public Message (string text, float timer)
+        public Message (string title, string[] sentences, float timer)
         {
-            this.text = text;
+            this.title = title;
+            this.sentences = new Queue<string>(sentences);
             this.timer = timer;
         }
     }
@@ -32,7 +37,10 @@ public class MessageBox : MonoBehaviour
 
     private void Start ()
     {
-        Hide();
+        if (message == null)
+        {
+            box.SetActive(false);
+        }
     }
 
     private void Update ()
@@ -44,19 +52,33 @@ public class MessageBox : MonoBehaviour
             
             if (time >= 1)
             {
-                Hide();
+                if (message.sentences.Count > 0)
+                {
+                    DisplaySentence();
+                }
+                else
+                {
+                    Hide();
+                }
             }
         }
     }
     
     public void Display (Message message)
     {
-        startTime = Time.time;
         this.message = message;
-        textMP.text = message.text;
-        slider.value = 0;
+        title.text = message.title;
+        DisplaySentence();
         // SHOW
         box.SetActive(true);
+    }
+
+    protected void DisplaySentence ()
+    {
+        startTime = Time.time;
+        slider.value = 0;
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(message.sentences.Dequeue()));
     }
 
     public void Hide ()
@@ -66,4 +88,13 @@ public class MessageBox : MonoBehaviour
         box.SetActive(false);
     }
 
+    IEnumerator TypeSentence (string sentence)
+    {
+        body.text = "";
+        foreach (char letter in sentence.ToCharArray())
+        {
+            body.text += letter;
+            yield return null;
+        }
+    }
 }
