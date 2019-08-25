@@ -133,6 +133,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: hero_walk
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 43d2bf676a905664c844463a765862ac,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0d7577b91c2e1af4a8d7a810f540c40c, type: 2}
     - target: {fileID: -4216859302048453862, guid: 43d2bf676a905664c844463a765862ac,
         type: 3}
       propertyPath: m_LocalPosition.x
