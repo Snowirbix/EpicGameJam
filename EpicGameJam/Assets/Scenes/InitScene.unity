@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 221671245}
   m_Layer: 0
   m_Name: Camera2D
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -307,8 +307,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 703b245f98d111d418d988ba74eefbce, type: 3}
-  pixelSizeX: 5
-  pixelSizeY: 5
+  pixelSizeX: 4
+  pixelSizeY: 4
   lockXY: 1
 --- !u!20 &221671246
 Camera:
@@ -417,9 +417,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf10a239a045d2c4fade466d1120eef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera2D: {fileID: 221671243}
-  camera3D: {fileID: 1067682972}
+  camera2D:
+    position: {x: 0, y: 355, z: -355}
+    tilt: 45
+    fov: 1
+    pixelation: 5
+  camera3D:
+    position: {x: 0, y: 10, z: -10}
+    tilt: 45
+    fov: 50
+    pixelation: 1
   camera: {fileID: 354252646}
+  pixelCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  duration: 2
+  ratio: 0
 --- !u!4 &250047528
 Transform:
   m_ObjectHideFlags: 0
@@ -464,13 +498,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 354252646}
-  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: 0, y: 8, z: -5}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 355, z: -355}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 250047528}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!114 &354252648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -484,8 +518,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 703b245f98d111d418d988ba74eefbce, type: 3}
-  pixelSizeX: 1
-  pixelSizeY: 1
+  pixelSizeX: 5
+  pixelSizeY: 5
   lockXY: 1
 --- !u!81 &354252649
 AudioListener:
@@ -520,7 +554,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 1
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -983,7 +1017,7 @@ GameObject:
   - component: {fileID: 1067682976}
   m_Layer: 0
   m_Name: Camera3D
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

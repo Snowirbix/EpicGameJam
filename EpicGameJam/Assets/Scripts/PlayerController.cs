@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     private void Start ()
     {
         character = GetComponent<CharacterController>();
-        MessageBox.instance.Display(new MessageBox.Message("Mr Bean", new [] { "Hey, do you want to play a game ?", "Give me your snack !" }, 3));
+        MessageBox.instance.Display(new MessageBox.Message("Mr Bean", new [] { "Hey, do you want to play a game ?", "Give me your snack !" }, 1));
     }
 
     private void Update ()
