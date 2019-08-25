@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [Range(1, 5)]
     public float speed = 2f;
 
+    public Transform rotator;
     private void Awake ()
     {
         controls = new PlayerControls();
@@ -40,5 +41,6 @@ public class PlayerController : MonoBehaviour
     private void Update ()
     {
         character.Move(new Vector3(axes.x, 0, axes.y) * speed * Time.deltaTime);
+        rotator.rotation = Quaternion.AngleAxis(Mathf.Atan2(axes.x, axes.y) * Mathf.Rad2Deg, Vector3.up);
     }
 }
