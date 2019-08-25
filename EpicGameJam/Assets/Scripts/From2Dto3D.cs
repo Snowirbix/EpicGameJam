@@ -6,7 +6,7 @@ public class From2Dto3D : MonoBehaviour
     public CameraSettings camera3D;
     public GameObject camera;
 
-    public AnimationCurve pixelCurve;
+    public AnimationCurve ratioCurve;
 
     public float duration = 10f;
 
@@ -23,6 +23,11 @@ public class From2Dto3D : MonoBehaviour
         public float tilt;
         public float fov;
         public int pixelation;
+    }
+
+    private void Start ()
+    {
+        Application.targetFrameRate = 15;
     }
     
     public void StartTransformation ()
@@ -42,17 +47,18 @@ public class From2Dto3D : MonoBehaviour
             ratio = Mathf.Min((Time.time - startTime) / duration, 1);
             
             camera.transform.localRotation = Quaternion.Euler(Mathf.Lerp(camera2D.tilt, camera3D.tilt, ratio), 0, 0);
-            float fov = Mathf.Lerp(camera2D.fov, camera3D.fov, ratio);
+            float fov = Mathf.Lerp(camera2D.fov, camera3D.fov, ratioCurve.Evaluate(ratio));
 
             camera.GetComponent<Camera>().fieldOfView = fov;
             camera.transform.localPosition = camera3D.position.normalized * camera2D.position.magnitude / fov;
-            camera.GetComponent<Pixelate>().pixelSizeX = (int)Mathf.Lerp(camera2D.pixelation, 1, pixelCurve.Evaluate(ratio));
-            camera.GetComponent<Pixelate>().pixelSizeY = (int)Mathf.Lerp(camera2D.pixelation, 1, pixelCurve.Evaluate(ratio));
+            camera.GetComponent<Pixelate>().pixelSizeX = (int)Mathf.Lerp(camera2D.pixelation, 1, ratio);
+            camera.GetComponent<Pixelate>().pixelSizeY = (int)Mathf.Lerp(camera2D.pixelation, 1, ratio);
 
             if (ratio == 1)
             {
                 camera.GetComponent<Pixelate>().enabled = false;
                 transforming = false;
+                Application.targetFrameRate = 60;
             }
         }
     }

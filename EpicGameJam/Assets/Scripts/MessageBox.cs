@@ -91,9 +91,16 @@ public class MessageBox : MonoBehaviour
     IEnumerator TypeSentence (string sentence)
     {
         body.text = "";
-        foreach (char letter in sentence.ToCharArray())
+        Queue<char> letters = new Queue<char>(sentence.ToCharArray());
+
+        while (letters.Count > 1)
         {
-            body.text += letter;
+            // add more letters if framerate is lower
+            for (int i = 0; i < (int)(60 / Application.targetFrameRate); i++)
+            {
+                if (letters.Count > 1)
+                    body.text += letters.Dequeue();
+            }
             yield return null;
         }
     }
