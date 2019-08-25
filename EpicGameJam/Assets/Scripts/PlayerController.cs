@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public float speed = 2f;
 
     public Transform rotator;
+
+    private Vector2 lastDirection = new Vector2(0,1);
     private void Awake ()
     {
         controls = new PlayerControls();
@@ -41,6 +43,19 @@ public class PlayerController : MonoBehaviour
     private void Update ()
     {
         character.Move(new Vector3(axes.x, 0, axes.y) * speed * Time.deltaTime);
-        rotator.rotation = Quaternion.AngleAxis(Mathf.Atan2(axes.x, axes.y) * Mathf.Rad2Deg, Vector3.up);
+        Direction();
+        rotator.rotation = Quaternion.AngleAxis(Mathf.Atan2(lastDirection.x, lastDirection.y) * Mathf.Rad2Deg, Vector3.up);
+    }
+
+    private void Direction()
+    {
+        Vector2 direction = new Vector2(axes.x,axes.y);
+
+        if(direction == Vector2.zero)
+        {
+            return;
+        }
+
+        lastDirection = direction;
     }
 }
