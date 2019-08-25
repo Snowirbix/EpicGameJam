@@ -16,12 +16,17 @@ public class PlayerController : MonoBehaviour
     public Transform rotator;
 
     private Vector2 lastDirection = new Vector2(0,1);
+
+    private bool canInteract = false;
+    
+    private InteractableScript interactableScript;
     private void Awake ()
     {
         controls = new PlayerControls();
 
         controls.Gameplay.Move.performed += ctx => axes = ctx.ReadValue<Vector2>();
         controls.Gameplay.Move.canceled  += ctx => axes = Vector2.zero;
+        controls.Gameplay.Interact.performed += ctx => Interact();
     }
 
     private void OnEnable ()
@@ -57,5 +62,31 @@ public class PlayerController : MonoBehaviour
         }
 
         lastDirection = direction;
+    }
+
+    private void Interact()
+    {
+        if(!canInteract)
+        {
+            return;
+        }
+
+        interactableScript.Interact();
+    }
+    private void OnTriggerEnter(Collider other) 
+    {
+        if(other.tag == "interactable")
+        {
+            canInteract = true;
+            interactableScript = other.GetComponent<InteractableScript>();
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.tag == "interactable")
+        {
+            canInteract = false;
+            interactableScript = null;
+        }
     }
 }
