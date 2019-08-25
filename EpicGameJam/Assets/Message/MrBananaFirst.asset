@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e15388594789f04448aa1470ee4693ce, type: 3}
   m_Name: MrBananaFirst
   m_EditorClassIdentifier: 
-  messageTitle: 
-  messagecontent: []
+  messageTitle: Mr Banana
+  messagecontent:
+  - Hey, I would love to get a banana !
   timer: 2
