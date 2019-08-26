@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     private bool canInteract = false;
     
     private InteractableScript interactableScript;
+
+    private InformationBox informationBox;
     private void Awake ()
     {
         controls = new PlayerControls();
@@ -79,6 +81,7 @@ public class PlayerController : MonoBehaviour
         {
             canInteract = true;
             interactableScript = other.GetComponent<InteractableScript>();
+            informationBox = InformationBox.instance.Display(new InformationBox.Information(new []{"Press 'E' to interact !"}));
         }
     }
     private void OnTriggerExit(Collider other)
@@ -87,6 +90,7 @@ public class PlayerController : MonoBehaviour
         {
             canInteract = false;
             interactableScript = null;
+            informationBox.Hide();
         }
     }
 }

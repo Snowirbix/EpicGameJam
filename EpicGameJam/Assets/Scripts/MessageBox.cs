@@ -98,7 +98,7 @@ public class MessageBox : MonoBehaviour
             // add more letters if framerate is lower
             for (int i = 0; i < (int)(60 / Application.targetFrameRate); i++)
             {
-                if (letters.Count > 1)
+                if (letters.Count > 0) // i've changed from 1 to 0, i've seen that one letter was missing, but well i'm tired it's 4 am, check this out alban
                     body.text += letters.Dequeue();
             }
             yield return null;
