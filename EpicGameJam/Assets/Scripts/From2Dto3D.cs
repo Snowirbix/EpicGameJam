@@ -46,11 +46,11 @@ public class From2Dto3D : MonoBehaviour
         {
             ratio = Mathf.Min((Time.time - startTime) / duration, 1);
             
-            camera.transform.localRotation = Quaternion.Euler(Mathf.Lerp(camera2D.tilt, camera3D.tilt, ratio), 0, 0);
             float fov = Mathf.Lerp(camera2D.fov, camera3D.fov, ratioCurve.Evaluate(ratio));
 
             camera.GetComponent<Camera>().fieldOfView = fov;
             camera.transform.localPosition = camera3D.position.normalized * camera2D.position.magnitude / fov;
+            //camera.transform.localRotation = Quaternion.Euler(Mathf.Lerp(camera2D.tilt, camera3D.tilt, ratio), 0, 0);
             camera.GetComponent<Pixelate>().pixelSizeX = (int)Mathf.Lerp(camera2D.pixelation, 1, ratio);
             camera.GetComponent<Pixelate>().pixelSizeY = (int)Mathf.Lerp(camera2D.pixelation, 1, ratio);
 
