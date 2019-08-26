@@ -27,7 +27,7 @@ public class From2Dto3D : MonoBehaviour
 
     private void Start ()
     {
-        Application.targetFrameRate = 15;
+        Application.targetFrameRate = 30;
     }
     
     public void StartTransformation ()

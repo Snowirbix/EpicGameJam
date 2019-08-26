@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     protected PlayerControls controls;
     protected CharacterController character;
 
@@ -24,6 +26,8 @@ public class PlayerController : MonoBehaviour
     private InformationBox informationBox;
     private void Awake ()
     {
+        instance = this;
+
         controls = new PlayerControls();
 
         controls.Gameplay.Move.performed += ctx => axes = ctx.ReadValue<Vector2>();
@@ -49,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update ()
     {
-        character.Move(new Vector3(axes.x, 0, axes.y) * speed * Time.deltaTime);
+        character.Move(new Vector3(axes.x, -1f, axes.y) * speed * Time.deltaTime);
         Direction();
         rotator.rotation = Quaternion.AngleAxis(Mathf.Atan2(lastDirection.x, lastDirection.y) * Mathf.Rad2Deg, Vector3.up);
     }
