@@ -56,9 +56,12 @@ public class PlayerController : MonoBehaviour
     private void Update ()
     {
         // gravity if the player is above the ground
-        character.Move(new Vector3(axes.x, transform.position.y > 0.2f ? -1 : 0, axes.y) * speed * Time.deltaTime);
-        Direction();
-        rotator.rotation = Quaternion.AngleAxis(Mathf.Atan2(lastDirection.x, lastDirection.y) * Mathf.Rad2Deg, Vector3.up);
+        if(!Pause.gameIsPaused)
+        {
+            character.Move(new Vector3(axes.x, transform.position.y > 0.2f ? -1 : 0, axes.y) * speed * Time.deltaTime);
+            Direction();
+            rotator.rotation = Quaternion.AngleAxis(Mathf.Atan2(lastDirection.x, lastDirection.y) * Mathf.Rad2Deg, Vector3.up);
+        }
     }
 
     private void Direction()
@@ -75,7 +78,7 @@ public class PlayerController : MonoBehaviour
 
     private void Interact()
     {
-        if(!canInteract)
+        if(!canInteract || Pause.gameIsPaused)
         {
             return;
         }
