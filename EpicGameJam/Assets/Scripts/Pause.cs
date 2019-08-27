@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
+    public static bool gameIsPaused = false;
     public GameObject pauseUI;
     public void PauseGame()
     {
@@ -11,6 +12,7 @@ public class Pause : MonoBehaviour
         {
             pauseUI.SetActive(true);
             Time.timeScale = 0f;
+            gameIsPaused = true;
         }
         else
         {
@@ -22,6 +24,7 @@ public class Pause : MonoBehaviour
     {
         pauseUI.SetActive(false);
         Time.timeScale = 1f;
+        gameIsPaused = false;
     }
 
     public void Quit()
