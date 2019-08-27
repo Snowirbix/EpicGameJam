@@ -446,6 +446,7 @@ GameObject:
   - component: {fileID: 250047524}
   - component: {fileID: 250047526}
   - component: {fileID: 250047527}
+  - component: {fileID: 250047529}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -567,6 +568,30 @@ Transform:
   m_Father: {fileID: 110204641}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &250047529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250047523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6492d431e64d8bd4c98cac08f779ddcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMeshProUGUIs:
+  - {fileID: 1811859805}
+  - {fileID: 771480738}
+  textMeshProsWhite:
+  - {fileID: 1196982163}
+  - {fileID: 253132665}
+  - {fileID: 1941273773}
+  textMeshProsGrey:
+  - {fileID: 869760059}
+  asset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  grey: {fileID: 2100000, guid: 6303a3206c8139f41b10b4f7785ad303, type: 2}
+  white: {fileID: 2100000, guid: 1c5928c8b7f1aa04686a20f05cf2df22, type: 2}
 --- !u!1 &253132663
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,7 +604,7 @@ GameObject:
   - component: {fileID: 253132666}
   - component: {fileID: 253132665}
   m_Layer: 5
-  m_Name: Text
+  m_Name: QuitText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1544,6 +1569,23 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6414850923816115909, guid: 0e4c8a33275e613478383989f45a58bc,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: bc724f851a3aab84d94509d4f5ef7eb7,
+        type: 2}
+    - target: {fileID: 6414850923816115909, guid: 0e4c8a33275e613478383989f45a58bc,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3057753964517144382, guid: bc724f851a3aab84d94509d4f5ef7eb7,
+        type: 2}
+    - target: {fileID: 6414850923816115915, guid: 0e4c8a33275e613478383989f45a58bc,
+        type: 3}
+      propertyPath: m_Name
+      value: InformationText
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e4c8a33275e613478383989f45a58bc, type: 3}
 --- !u!1 &949347915
@@ -2426,6 +2468,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802563382}
   m_CullTransparentMesh: 0
+--- !u!114 &1811859805 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6414850923816115909, guid: 0e4c8a33275e613478383989f45a58bc,
+    type: 3}
+  m_PrefabInstance: {fileID: 915767664}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1924678404
 GameObject:
   m_ObjectHideFlags: 0
@@ -2605,7 +2659,7 @@ GameObject:
   - component: {fileID: 1941273774}
   - component: {fileID: 1941273773}
   m_Layer: 5
-  m_Name: Text
+  m_Name: ResumeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

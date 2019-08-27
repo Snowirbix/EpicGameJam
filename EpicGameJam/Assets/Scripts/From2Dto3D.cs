@@ -16,6 +16,8 @@ public class From2Dto3D : MonoBehaviour
     protected float startTime;
     protected bool transforming = false;
 
+    private FontChanger fontChanger;
+
     [System.Serializable]
     public struct CameraSettings
     {
@@ -28,6 +30,7 @@ public class From2Dto3D : MonoBehaviour
     private void Start ()
     {
         Application.targetFrameRate = 30;
+        fontChanger = GetComponent<FontChanger>();
     }
     
     public void StartTransformation ()
@@ -59,6 +62,7 @@ public class From2Dto3D : MonoBehaviour
                 camera.GetComponent<Pixelate>().enabled = false;
                 transforming = false;
                 Application.targetFrameRate = 60;
+                fontChanger.FontChange();
             }
         }
     }
