@@ -48,12 +48,12 @@ public class PlayerController : MonoBehaviour
     private void Start ()
     {
         character = GetComponent<CharacterController>();
-        MessageBox.instance.Display(new MessageBox.Message("Mr Bean", new [] { "Hey, do you want to play a game ?", "Give me your snack !" }, 1));
     }
 
     private void Update ()
     {
-        character.Move(new Vector3(axes.x, -1f, axes.y) * speed * Time.deltaTime);
+        // gravity if the player is above the ground
+        character.Move(new Vector3(axes.x, transform.position.y > 0.2f ? -1 : 0, axes.y) * speed * Time.deltaTime);
         Direction();
         rotator.rotation = Quaternion.AngleAxis(Mathf.Atan2(lastDirection.x, lastDirection.y) * Mathf.Rad2Deg, Vector3.up);
     }
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
         {
             canInteract = true;
             interactableScript = other.GetComponent<InteractableScript>();
-            informationBox = InformationBox.instance.Display(new InformationBox.Information(new []{"Press 'E' to interact !"}));
+            informationBox = InformationBox.instance.Display(new InformationBox.Information(new [] {"Press 'E' to interact !"}));
         }
     }
     private void OnTriggerExit(Collider other)
