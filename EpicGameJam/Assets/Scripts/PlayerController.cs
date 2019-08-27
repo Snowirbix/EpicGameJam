@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
     public Transform rotator;
 
+    public Pause pauseMenu;
+
     private Vector2 lastDirection = new Vector2(0,1);
 
     private bool canInteract = false;
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
         controls.Gameplay.Move.performed += ctx => axes = ctx.ReadValue<Vector2>();
         controls.Gameplay.Move.canceled  += ctx => axes = Vector2.zero;
         controls.Gameplay.Interact.performed += ctx => Interact();
+        controls.Gameplay.Pause.performed += ctx => pauseMenu.PauseGame();
     }
 
     private void OnEnable ()
