@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
@@ -12,14 +10,16 @@ public class Tutorial : MonoBehaviour
 
     private MessageObject[] Step;
 
-    bool firstStep = false;
-    bool secondStep = false;
+    bool firstStep, secondStep, thirdStep = false;
     
     public Image fade;
 
     private Vector2 axes;
 
-    bool down,left,right = false;
+    bool left,right = false;
+
+    MessageBox.Message msg;
+
     void Start()
     {
         if(options.keyboard == Options.Keyboard.QWERTY)
@@ -31,7 +31,8 @@ public class Tutorial : MonoBehaviour
             Step = StepA;
         }
 
-        MessageBox.instance.Display(new MessageBox.Message(Step[0].messageTitle, Step[0].messagecontent, Step[0].timer));
+        msg = new MessageBox.Message(Step[0].messageTitle, Step[0].messageContent);
+        MessageBox.instance.Display(msg);
         firstStep = true;
     }
 
@@ -51,7 +52,9 @@ public class Tutorial : MonoBehaviour
             if(PlayerController.instance.axes.y == 1)
             {
                 firstStep = false;
-                MessageBox.instance.Display(new MessageBox.Message(Step[1].messageTitle, Step[1].messagecontent, Step[1].timer));
+                msg.sentences[1].Next();
+                msg = new MessageBox.Message(Step[1].messageTitle, Step[1].messageContent);
+                MessageBox.instance.Display(msg);
                 secondStep = true;
             }
         }
@@ -67,12 +70,23 @@ public class Tutorial : MonoBehaviour
                 left = true;
                 break;
             }
-            if(PlayerController.instance.axes.y == -1){down = true;}
 
-            if(down && right && left)
+            if(right && left)
             {
                 secondStep = false;
-                MessageBox.instance.Display(new MessageBox.Message(Step[2].messageTitle, Step[2].messagecontent, Step[2].timer));
+                msg.sentences[2].Next();
+                thirdStep = true;
+            }
+        }
+
+        if (thirdStep)
+        {
+            if(PlayerController.instance.axes.y == -1)
+            {
+                thirdStep = false;
+                msg.sentences[3].Next();
+                msg = new MessageBox.Message(Step[2].messageTitle, Step[2].messageContent);
+                MessageBox.instance.Display(msg);
             }
         }
     }

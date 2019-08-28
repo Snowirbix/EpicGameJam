@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class InteractableScript : MonoBehaviour
 {
@@ -15,6 +13,6 @@ public class InteractableScript : MonoBehaviour
 
     public void Interact()
     {
-        MessageBox.instance.Display(new MessageBox.Message( messageObject.messageTitle , messageObject.messagecontent , messageObject.timer));
+        MessageBox.instance.Display(new MessageBox.Message(messageObject.messageTitle , messageObject.messageContent));
     }
 }

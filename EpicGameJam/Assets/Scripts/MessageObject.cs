@@ -1,11 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "Message", menuName = "Message")]
 public class MessageObject : ScriptableObject
 {
     public string messageTitle;
-    public string[] messagecontent;
-    public float timer;
+
+    [System.Serializable]
+    public class Sentence
+    {
+        public string text;
+        public float timer = 3;
+    }
+
+    public Sentence[] messageContent;
 }

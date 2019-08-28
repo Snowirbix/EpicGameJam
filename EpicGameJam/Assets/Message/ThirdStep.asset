@@ -17,3 +17,8 @@ MonoBehaviour:
   - Yeah, I think you got it :p
   - Let's try something else
   timer: 1.5
+  messageContent:
+  - text: Yeah, I think you got it :p
+    timer: 1.5
+  - text: Let's try something else
+    timer: 1.5

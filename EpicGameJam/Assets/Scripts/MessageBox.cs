@@ -15,18 +15,50 @@ public class MessageBox : MonoBehaviour
 
     protected float startTime;
     protected Message message;
+    protected Sentence sentence;
 
+    [System.Serializable]
     public class Message
     {
         public string title;
-        public Queue<string> sentences;
-        public float timer = 5f;
+        public List<Sentence> sentences = new List<Sentence>();
+        public int idx = 0;
 
-        public Message (string title, string[] sentences, float timer)
+        public Message (string title, Sentence[] sentences)
         {
             this.title = title;
-            this.sentences = new Queue<string>(sentences);
+            this.sentences = new List<Sentence>(sentences);
+        }
+        
+        public Message (string title, MessageObject.Sentence[] msgSentences)
+        {
+            this.title = title;
+            // conversion from scriptable sentence to object sentence
+            for (int i = 0; i < msgSentences.Length; i++)
+            {
+                this.sentences.Add(new Sentence(msgSentences[i].text, msgSentences[i].timer));
+            }
+        }
+    }
+
+    [System.Serializable]
+    public class Sentence
+    {
+        public string text;
+        public float timer = 5f;
+        //[HideInInspector]
+        public bool next = false;
+
+        public Sentence (string text, float timer = 0)
+        {
+            this.text = text;
+            // 0 means forever
             this.timer = timer;
+        }
+
+        public void Next ()
+        {
+            this.next = true;
         }
     }
 
@@ -45,14 +77,30 @@ public class MessageBox : MonoBehaviour
 
     private void Update ()
     {
-        if (message != null)
+        if (sentence != null)
         {
-            float time = (Time.time - startTime) / message.timer;
-            slider.value = time;
-            
-            if (time >= 1)
+            if (sentence.timer > 0)
             {
-                if (message.sentences.Count > 0)
+                float time = (Time.time - startTime) / sentence.timer;
+                slider.value = time;
+                
+                if (time >= 1)
+                {
+                    message.idx++;
+                    if (message.idx < message.sentences.Count)
+                    {
+                        DisplaySentence();
+                    }
+                    else
+                    {
+                        Hide();
+                    }
+                }
+            }
+            else if (sentence.next)
+            {
+                message.idx++;
+                if (message.idx < message.sentences.Count)
                 {
                     DisplaySentence();
                 }
@@ -78,20 +126,22 @@ public class MessageBox : MonoBehaviour
         startTime = Time.time;
         slider.value = 0;
         StopAllCoroutines();
-        StartCoroutine(TypeSentence(message.sentences.Dequeue()));
+        this.sentence = message.sentences[message.idx];
+        StartCoroutine(TypeSentence(sentence));
     }
 
     public void Hide ()
     {
         this.message = null;
+        this.sentence = null;
         // HIDE
         box.SetActive(false);
     }
 
-    IEnumerator TypeSentence (string sentence)
+    IEnumerator TypeSentence (Sentence sentence)
     {
         body.text = "";
-        Queue<char> letters = new Queue<char>(sentence.ToCharArray());
+        Queue<char> letters = new Queue<char>(sentence.text.ToCharArray());
 
         while (letters.Count > 0)
         {

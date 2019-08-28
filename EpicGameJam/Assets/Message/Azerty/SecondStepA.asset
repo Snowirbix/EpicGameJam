@@ -19,3 +19,12 @@ MonoBehaviour:
   - So you have to go Left and Right with "Q" and "D".
   - If you're a coward you can go backward using "S".
   timer: 2
+  messageContent:
+  - text: Yes ! Well done :)
+    timer: 1.5
+  - text: Sometimes the path to the glory is not straight forward
+    timer: 2.5
+  - text: So you have to go Left and Right with "Q" and "D"
+    timer: 0
+  - text: If you are a coward, you can go backward using "S"
+    timer: 0
