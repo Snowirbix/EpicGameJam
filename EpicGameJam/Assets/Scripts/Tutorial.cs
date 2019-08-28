@@ -41,6 +41,10 @@ public class Tutorial : MonoBehaviour
         {
             fade.color = new Color(fade.color.r, fade.color.g , fade.color.b , fade.color.a - 0.005f);
         }
+        else
+        {
+            fade.gameObject.SetActive(false);
+        }
 
         if(firstStep)
         {

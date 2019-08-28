@@ -16,6 +16,6 @@ MonoBehaviour:
   messagecontent:
   - Yes ! Well done :)
   - Sometimes the path is not straight forward.
-  - "So you have to go Left and Right with \x1C\"A\" and \x1C\"D\"."
+  - So you have to go Left and Right with "Q" and "D".
   - If you're a coward you can go backward using "S".
   timer: 2
