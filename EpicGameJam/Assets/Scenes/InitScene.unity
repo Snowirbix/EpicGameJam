@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac9ac2fdce614064a827459fc1039e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: City
+  sceneName: TutorialIndoor
   onStart: 1
 --- !u!1 &221671243
 GameObject:

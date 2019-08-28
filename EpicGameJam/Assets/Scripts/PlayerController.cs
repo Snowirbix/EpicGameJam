@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
 
-    protected PlayerControls controls;
+    public static PlayerControls controls;
     protected CharacterController character;
 
     [ReadOnly]
