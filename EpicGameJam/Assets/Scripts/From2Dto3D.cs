@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class From2Dto3D : MonoBehaviour
 {
     public CameraSettings camera2D;
     public CameraSettings camera3D;
-    public GameObject camera;
+    public GameObject cam;
 
     public AnimationCurve ratioCurve;
 
@@ -17,6 +18,9 @@ public class From2Dto3D : MonoBehaviour
     protected bool transforming = false;
 
     private FontChanger fontChanger;
+
+    protected Pixelate pixelate;
+    protected Camera camera;
 
     [System.Serializable]
     public struct CameraSettings
@@ -31,6 +35,8 @@ public class From2Dto3D : MonoBehaviour
     {
         Application.targetFrameRate = 30;
         fontChanger = GetComponent<FontChanger>();
+        camera = cam.GetComponent<Camera>();
+        pixelate = cam.GetComponent<Pixelate>();
     }
     
     public void StartTransformation ()
@@ -51,15 +57,16 @@ public class From2Dto3D : MonoBehaviour
             
             float fov = Mathf.Lerp(camera2D.fov, camera3D.fov, ratioCurve.Evaluate(ratio));
 
-            camera.GetComponent<Camera>().fieldOfView = fov;
+            camera.fieldOfView = fov;
             camera.transform.localPosition = camera3D.position.normalized * camera2D.position.magnitude / fov;
             //camera.transform.localRotation = Quaternion.Euler(Mathf.Lerp(camera2D.tilt, camera3D.tilt, ratio), 0, 0);
-            camera.GetComponent<Pixelate>().pixelSizeX = (int)Mathf.Lerp(camera2D.pixelation, 1, ratio);
-            camera.GetComponent<Pixelate>().pixelSizeY = (int)Mathf.Lerp(camera2D.pixelation, 1, ratio);
+            pixelate.pixelSizeX = (int)Mathf.Lerp(camera2D.pixelation, 1, ratio);
+            pixelate.pixelSizeY = (int)Mathf.Lerp(camera2D.pixelation, 1, ratio);
 
             if (ratio == 1)
             {
-                camera.GetComponent<Pixelate>().enabled = false;
+                pixelate.enabled = false;
+                camera.GetComponent<PostProcessLayer>().enabled = true;
                 transforming = false;
                 Application.targetFrameRate = 60;
                 fontChanger.FontChange();
