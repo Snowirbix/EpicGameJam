@@ -26,6 +26,10 @@ public class PlayerController : MonoBehaviour
     private InteractableScript interactableScript;
 
     private InformationBox informationBox;
+
+    [HideInInspector]
+    public Vector3 prediction;
+
     private void Awake ()
     {
         instance = this;
@@ -55,10 +59,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update ()
     {
-        // gravity if the player is above the ground
         if(!Pause.gameIsPaused)
         {
-            character.Move(new Vector3(axes.x, transform.position.y > 0.2f ? -1 : 0, axes.y) * speed * Time.deltaTime);
+            prediction = new Vector3(axes.x, 0, axes.y) * speed;
+            // gravity if the player is above the ground
+            prediction.y = transform.position.y > 0.2f ? -1 : 0;
+            character.Move(prediction * Time.deltaTime);
             Direction();
             rotator.rotation = Quaternion.AngleAxis(Mathf.Atan2(lastDirection.x, lastDirection.y) * Mathf.Rad2Deg, Vector3.up);
         }

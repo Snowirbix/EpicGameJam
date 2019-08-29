@@ -107,15 +107,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 1
     agentHeight: 2
-    agentSlope: 45
+    agentSlope: 34.1
     agentClimb: 0.4
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.33333334
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -1146,7 +1146,22 @@ PrefabInstance:
     - target: {fileID: 5452865240144708757, guid: f8a6b321c7c4c2c4aa2f95546e80c56a,
         type: 3}
       propertyPath: layerMask.m_Bits
-      value: 4294967295
+      value: 1025
+      objectReference: {fileID: 0}
+    - target: {fileID: 5452865240144708757, guid: f8a6b321c7c4c2c4aa2f95546e80c56a,
+        type: 3}
+      propertyPath: randomness
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5452865240144708757, guid: f8a6b321c7c4c2c4aa2f95546e80c56a,
+        type: 3}
+      propertyPath: prediction
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5452865240144708757, guid: f8a6b321c7c4c2c4aa2f95546e80c56a,
+        type: 3}
+      propertyPath: attackSpeed
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8a6b321c7c4c2c4aa2f95546e80c56a, type: 3}
@@ -12458,6 +12473,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 579130024}
     m_Modifications:
+    - target: {fileID: 8363927794211678444, guid: c4ddf9f8ef5078e4c8fef7f9512c2da0,
+        type: 3}
+      propertyPath: m_Name
+      value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363927794211678444, guid: c4ddf9f8ef5078e4c8fef7f9512c2da0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 8363927794211678448, guid: c4ddf9f8ef5078e4c8fef7f9512c2da0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12512,16 +12537,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8363927794211678444, guid: c4ddf9f8ef5078e4c8fef7f9512c2da0,
-        type: 3}
-      propertyPath: m_Name
-      value: Road
-      objectReference: {fileID: 0}
-    - target: {fileID: 8363927794211678444, guid: c4ddf9f8ef5078e4c8fef7f9512c2da0,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4ddf9f8ef5078e4c8fef7f9512c2da0, type: 3}
