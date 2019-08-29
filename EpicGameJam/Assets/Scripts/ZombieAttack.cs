@@ -28,7 +28,7 @@ public class ZombieAttack : MonoBehaviour
         {
             if (col.tag == "Player")
             {
-                col.GetComponent<PlayerController>().ChangeHealth(-20);
+                PlayerController.instance.ChangeHealth(-20);
             }
         }
     }

@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
         }
 
         postProcess.profile.TryGetSettings(out vignette);
-        vignette.intensity.value = Mathf.Lerp(0, 0.7f, 1f - (health / maxHealth));
+        vignette.intensity.value = Mathf.Lerp(0, 0.5f, 1f - (health / maxHealth));
     }
 
     public void Die ()
