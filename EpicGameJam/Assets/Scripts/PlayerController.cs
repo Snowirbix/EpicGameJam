@@ -12,8 +12,8 @@ public class PlayerController : MonoBehaviour
     [ReadOnly]
     public Vector2 axes;
 
-    [Range(1, 5)]
-    public float speed = 2f;
+    [Range(2, 10)]
+    public float speed = 7f;
 
     public Transform rotator;
 

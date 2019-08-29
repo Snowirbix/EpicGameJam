@@ -682,9 +682,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   axes: {x: 0, y: 0}
-  speed: 5
+  speed: 7
   rotator: {fileID: 94049603}
   pauseMenu: {fileID: 2096204222}
+  prediction: {x: 0, y: 0, z: 0}
 --- !u!143 &250047525
 CharacterController:
   m_ObjectHideFlags: 0
