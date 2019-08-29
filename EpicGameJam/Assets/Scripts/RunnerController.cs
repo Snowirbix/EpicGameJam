@@ -7,7 +7,9 @@ public class RunnerController : MonoBehaviour
 
     public float range = 2f;
 
-    public float attackSpeed = 1;
+    public float attackSpeed = 0.3f;
+
+    public float attackTime = 0.4f;
 
     [Range(0, 2)]
     public float prediction = 1;
@@ -43,7 +45,7 @@ public class RunnerController : MonoBehaviour
         dir.Normalize();
         dir2.Normalize();
 
-        if (isAttacking && Time.time > lastAttack + 0.5f)
+        if (isAttacking && Time.time > lastAttack + attackTime)
         {
             StopAttack();
         }
@@ -59,7 +61,7 @@ public class RunnerController : MonoBehaviour
         else if (distance > range)
         {
             // hypersensitivity
-            if (Vector3.Distance(playerPos, agent.destination) > sensitivity/3)
+            if (Vector3.Distance(playerPos, agent.destination) > sensitivity/10f)
             {
                 agent.isStopped = false;
                 agent.updateRotation = false;

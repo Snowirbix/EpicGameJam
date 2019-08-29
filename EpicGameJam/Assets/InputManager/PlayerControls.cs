@@ -40,6 +40,14 @@ public class PlayerControls : IInputActionCollection
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""53628abe-e383-4dc8-a407-cb30e8657327"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -99,6 +107,61 @@ public class PlayerControls : IInputActionCollection
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""5ae7b6ff-4b30-40ec-a38c-13a11ba8e8bf"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""acb443e4-3303-47b0-a976-8c421dfa237e"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""f3c655fe-f276-4b9e-8f31-7d1347f93737"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""52fa7f0b-63ee-406b-b26a-da233f2c1c7d"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""88bab536-3015-4ecb-8f7b-03fe7658fe23"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""fbc71914-3e15-40a4-ac03-18d955133497"",
                     ""path"": ""<Keyboard>/e"",
@@ -119,6 +182,17 @@ public class PlayerControls : IInputActionCollection
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""20538ea6-5fe5-402f-8863-1dd71471aebc"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -130,6 +204,7 @@ public class PlayerControls : IInputActionCollection
         m_Gameplay_Move = m_Gameplay.GetAction("Move");
         m_Gameplay_Interact = m_Gameplay.GetAction("Interact");
         m_Gameplay_Pause = m_Gameplay.GetAction("Pause");
+        m_Gameplay_Attack = m_Gameplay.GetAction("Attack");
     }
 
     ~PlayerControls()
@@ -182,6 +257,7 @@ public class PlayerControls : IInputActionCollection
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_Interact;
     private readonly InputAction m_Gameplay_Pause;
+    private readonly InputAction m_Gameplay_Attack;
     public struct GameplayActions
     {
         private PlayerControls m_Wrapper;
@@ -189,6 +265,7 @@ public class PlayerControls : IInputActionCollection
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
+        public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -207,6 +284,9 @@ public class PlayerControls : IInputActionCollection
                 Pause.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
                 Pause.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
                 Pause.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
+                Attack.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
+                Attack.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
+                Attack.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -220,6 +300,9 @@ public class PlayerControls : IInputActionCollection
                 Pause.started += instance.OnPause;
                 Pause.performed += instance.OnPause;
                 Pause.canceled += instance.OnPause;
+                Attack.started += instance.OnAttack;
+                Attack.performed += instance.OnAttack;
+                Attack.canceled += instance.OnAttack;
             }
         }
     }
@@ -229,5 +312,6 @@ public class PlayerControls : IInputActionCollection
         void OnMove(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
     }
 }

@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
-public class ZombieAttack : MonoBehaviour
+public class PlayerAttack : MonoBehaviour
 {
-    public MeshRenderer[] renderers;
     public GameObject impact;
     protected BoxCollider box;
 
@@ -15,33 +15,27 @@ public class ZombieAttack : MonoBehaviour
         box = GetComponent<BoxCollider>();
     }
 
-    public void Render (bool show)
-    {
-        foreach (MeshRenderer rend in renderers)
-        {
-            rend.enabled = show;
-        }
-    }
-
     public void Attack ()
     {
         foreach (Collider col in colliders)
         {
-            if (col.tag == "Player")
+            if (col.tag == "Enemy")
             {
-                PlayerController.instance.ChangeHealth(-20);
-                Instantiate(impact, PlayerController.instance.RayCaster.position, PlayerController.instance.RayCaster.rotation, PlayerController.instance.RayCaster);
+                col.GetComponent<Health>().ChangeHealth(-20);
+                Instantiate(impact, col.transform.position + Vector3.up, col.transform.rotation, col.transform);
             }
         }
     }
 
     private void OnTriggerEnter (Collider other)
     {
+        Debug.Log("Enter " + other.name);
         colliders.Add(other);
     }
 
     private void OnTriggerExit (Collider other)
     {
+        Debug.Log("Exit " + other.name);
         // TODO: check exit works when player dies
         colliders.Remove(other);
     }

@@ -10,6 +10,12 @@ public class PlayerController : MonoBehaviour
     public static PlayerControls controls;
     protected CharacterController character;
 
+    public Transform RayCaster;
+
+    public Animator animator;
+
+    public Transform sword;
+
     [ReadOnly]
     public Vector2 axes;
 
@@ -31,12 +37,21 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public Vector3 prediction;
 
-    protected float health = 100;
     public float maxHealth = 100;
+
+    [HideInInspector]
+    public float health;
 
     public PostProcessVolume postProcess;
 
     protected Vignette vignette;
+
+    public float attackSpeed = 1f;
+    public float attackTime = 0.5f;
+    protected bool isAttacking = false;
+    protected float lastAttack;
+
+    public PlayerAttack attack;
 
     private void Awake ()
     {
@@ -47,6 +62,7 @@ public class PlayerController : MonoBehaviour
         controls.Gameplay.Move.performed += ctx => axes = ctx.ReadValue<Vector2>();
         controls.Gameplay.Move.canceled  += ctx => axes = Vector2.zero;
         controls.Gameplay.Interact.performed += ctx => Interact();
+        controls.Gameplay.Attack.performed += ctx => Attack();
         controls.Gameplay.Pause.performed += ctx => pauseMenu.PauseGame();
     }
 
@@ -77,6 +93,11 @@ public class PlayerController : MonoBehaviour
             Direction();
             rotator.rotation = Quaternion.AngleAxis(Mathf.Atan2(lastDirection.x, lastDirection.y) * Mathf.Rad2Deg, Vector3.up);
         }
+
+        if (isAttacking && Time.time > lastAttack + attackTime)
+        {
+            StopAttack();
+        }
     }
 
     private void Direction()
@@ -100,6 +121,25 @@ public class PlayerController : MonoBehaviour
 
         interactableScript.Interact();
     }
+
+    protected void Attack ()
+    {
+        if (Time.time <= lastAttack + (1/attackSpeed))
+            return;
+        
+        sword.localScale = new Vector3(1.2f, 2f, 1.2f);
+        animator.SetTrigger("Action");
+        isAttacking = true;
+        lastAttack = Time.time;
+        attack.Attack();
+    }
+
+    protected void StopAttack ()
+    {
+        sword.localScale = new Vector3(1, 1f, 1);
+        isAttacking = false;
+    }
+
     private void OnTriggerEnter(Collider other) 
     {
         if(other.tag == "interactable")
