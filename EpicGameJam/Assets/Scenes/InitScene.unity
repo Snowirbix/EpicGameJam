@@ -3165,6 +3165,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4f8a1c0b9b3414640a208a304c0f19a7, type: 2}
   - {fileID: 11400000, guid: fdbd014eec8401443b52741a70df8dc2, type: 2}
   - {fileID: 11400000, guid: 4e903638079f2d34b872a8a6a2824436, type: 2}
+  firstStep: 0
+  secondStep: 0
+  thirdStep: 0
+  fourthStep: 0
   fade: {fileID: 5234357091710294204}
 --- !u!1 &5234357091710294178
 GameObject:
