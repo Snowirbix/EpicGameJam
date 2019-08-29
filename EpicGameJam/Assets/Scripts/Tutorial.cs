@@ -13,7 +13,7 @@ public class Tutorial : MonoBehaviour
 
     private MessageObject[] Step;
 
-    public bool firstStep, secondStep, thirdStep, fourthStep = false;
+    public bool firstStep, secondStep, thirdStep, fourthStep, fifthStep = false;
     
     public Image fade;
 

@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
     public Pause pauseMenu;
 
+    public GameObject backpack;
+
     private Vector2 lastDirection = new Vector2(0,1);
 
     private bool canInteract = false;
@@ -119,6 +121,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void HideBox()
+    {
+        canInteract = false;
+        interactableScript = null;
+        informationBox.Hide();
+    }
     public void ChangeHealth (float value)
     {
         health += value;
