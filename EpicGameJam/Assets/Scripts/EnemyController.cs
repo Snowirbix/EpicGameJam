@@ -40,6 +40,7 @@ public class EnemyController : MonoBehaviour
         Vector3 dir = playerPos - transform.position;
         Vector2 dir2 = playerPos2 - pos2;
         float distance = dir2.magnitude;
+        dir.Normalize();
         dir2.Normalize();
 
         if (distance > range * 0.8f)

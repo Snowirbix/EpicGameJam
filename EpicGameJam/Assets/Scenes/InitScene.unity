@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 250047530}
   m_Layer: 10
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -462,10 +462,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   axes: {x: 0, y: 0}
-  speed: 5
+  speed: 7
   rotator: {fileID: 1134634529}
   pauseMenu: {fileID: 2096204222}
   prediction: {x: 0, y: 0, z: 0}
+  maxHealth: 100
+  postProcess: {fileID: 994393935}
 --- !u!143 &250047525
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1729,7 +1731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &994393934
 Transform:
   m_ObjectHideFlags: 0
@@ -2439,11 +2441,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 250047528}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 54bea124336b6384b886db082b10f862,
-        type: 3}
-      propertyPath: m_Name
-      value: hero_animated_bake
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 54bea124336b6384b886db082b10f862,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2498,6 +2495,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 54bea124336b6384b886db082b10f862,
+        type: 3}
+      propertyPath: m_Name
+      value: hero_animated_bake
       objectReference: {fileID: 0}
     - target: {fileID: -6057140222963153312, guid: 54bea124336b6384b886db082b10f862,
         type: 3}

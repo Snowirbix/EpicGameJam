@@ -5,15 +5,7 @@ public class RunnerController : MonoBehaviour
 {
     public float sensitivity = 3;
 
-    public Transform rayCaster;
-
-    public LayerMask layerMask;
-
-    public float range = 15f;
-
-    public GameObject projectilePrefab;
-
-    public float projectileSpeed = 15;
+    public float range = 2f;
 
     public float attackSpeed = 1;
 
@@ -27,9 +19,17 @@ public class RunnerController : MonoBehaviour
 
     protected float lastAttack;
 
+    public Transform attackObject;
+
+    protected ZombieAttack attack;
+
+    protected bool isAttacking = false;
+
     private void Start ()
     {
         agent = GetComponent<NavMeshAgent>();
+        attack = attackObject.GetComponent<ZombieAttack>();
+        attack.Render(false);
     }
 
     private void Update ()
@@ -40,56 +40,64 @@ public class RunnerController : MonoBehaviour
         Vector3 dir = playerPos - transform.position;
         Vector2 dir2 = playerPos2 - pos2;
         float distance = dir2.magnitude;
+        dir.Normalize();
         dir2.Normalize();
 
-        if (distance > range * 0.8f)
+        if (isAttacking && Time.time > lastAttack + 0.5f)
+        {
+            StopAttack();
+        }
+        if (distance > 10)
         {
             if (Vector3.Distance(playerPos, agent.destination) > sensitivity)
             {
                 agent.isStopped = false;
+                agent.updateRotation = true;
+                agent.SetDestination(playerPos);
+            }
+        }
+        else if (distance > range)
+        {
+            // hypersensitivity
+            if (Vector3.Distance(playerPos, agent.destination) > sensitivity/3)
+            {
+                agent.isStopped = false;
+                agent.updateRotation = false;
                 agent.SetDestination(playerPos);
             }
         }
         else
         {
-            RaycastHit hitInfo;
-            float radius = 1;
-            bool hit = Physics.SphereCast(rayCaster.position, radius, dir, out hitInfo, range, layerMask);
-            
-            // LOS
-            if (hit && hitInfo.transform == PlayerController.instance.transform)
-            {
-                agent.isStopped = true;
+            agent.isStopped = true;
+            agent.updateRotation = false;
 
-                // add prediction
-                float predictionTime = prediction * (distance / range);
-                Vector3 predictedDir = ((playerPos + PlayerController.instance.prediction * predictionTime) - transform.position).normalized;
+            if (Time.time > lastAttack + (1/attackSpeed))
+                StartAttack();
+        }
 
-                if (Time.time > lastAttack + (1/attackSpeed))
-                    Shoot(new Vector2(predictedDir.x, predictedDir.z));
-            }
-            else
-            {
-                if (Vector3.Distance(playerPos, agent.destination) > sensitivity / 2)
-                {
-                    agent.isStopped = false;
-                    agent.SetDestination(playerPos);
-                }
-            }
+        if (!agent.updateRotation && !isAttacking)
+        {
+            transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(dir2.x, dir2.y) * Mathf.Rad2Deg, Vector3.up);
         }
     }
 
-    
-    protected void Shoot (Vector2 dir)
+    protected void StartAttack ()
     {
+        isAttacking = true;
         lastAttack = Time.time;
+        attack.Render(true);
 
         // add randomness
         float angle = Random.Range(-randomness/2, randomness/2);
-        Quaternion quat = Quaternion.Euler(0, 0, angle);
-        dir = quat * dir;
+        Quaternion quat = Quaternion.Euler(0, angle, 0);
+        transform.localRotation *= quat;
+    }
 
-        GameObject projectile = Instantiate(projectilePrefab, rayCaster.position, rayCaster.rotation);
-        projectile.GetComponent<Rigidbody>().AddForce(new Vector3(dir.x, 0, dir.y) * projectileSpeed, ForceMode.Impulse);
+    protected void StopAttack ()
+    {
+        attack.Render(false);
+        attack.Attack();
+
+        isAttacking = false;
     }
 }
