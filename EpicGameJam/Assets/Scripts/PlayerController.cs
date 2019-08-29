@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.PostProcessing;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -30,6 +31,13 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public Vector3 prediction;
 
+    protected float health = 100;
+    public float maxHealth = 100;
+
+    public PostProcessVolume postProcess;
+
+    protected Vignette vignette;
+
     private void Awake ()
     {
         instance = this;
@@ -55,6 +63,7 @@ public class PlayerController : MonoBehaviour
     private void Start ()
     {
         character = GetComponent<CharacterController>();
+        health = maxHealth;
     }
 
     private void Update ()
@@ -108,5 +117,24 @@ public class PlayerController : MonoBehaviour
             interactableScript = null;
             informationBox.Hide();
         }
+    }
+
+    public void ChangeHealth (float value)
+    {
+        health += value;
+        health = Mathf.Clamp(health, 0, maxHealth);
+
+        if (health == 0)
+        {
+            Die();
+        }
+
+        postProcess.profile.TryGetSettings(out vignette);
+        vignette.intensity.value = Mathf.Lerp(0, 0.7f, 1f - (health / maxHealth));
+    }
+
+    public void Die ()
+    {
+        //
     }
 }

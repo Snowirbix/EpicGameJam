@@ -26,7 +26,10 @@ public class ZombieAttack : MonoBehaviour
     {
         foreach (Collider col in colliders)
         {
-            Debug.Log("Attack: " + col.name);
+            if (col.tag == "Player")
+            {
+                col.GetComponent<PlayerController>().ChangeHealth(-20);
+            }
         }
     }
 
