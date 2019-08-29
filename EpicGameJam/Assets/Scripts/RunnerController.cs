@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour
+public class RunnerController : MonoBehaviour
 {
     public float sensitivity = 3;
 
