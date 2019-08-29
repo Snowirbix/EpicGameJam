@@ -128,6 +128,7 @@ public class Tutorial : MonoBehaviour
             fade.color = new Color(fade.color.r, fade.color.g , fade.color.b , fade.color.a + Time.deltaTime);
             yield return null;
         }
+        PlayerController.instance.transform.SetPositionAndRotation(initialPosition, Quaternion.identity);
         yield return new WaitForSeconds(1f);
         PlayerController.instance.transform.SetPositionAndRotation(initialPosition, Quaternion.identity);
         while (fade.color.a > 0f)
