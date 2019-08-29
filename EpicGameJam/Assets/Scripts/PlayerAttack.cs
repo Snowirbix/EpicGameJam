@@ -10,6 +10,10 @@ public class PlayerAttack : MonoBehaviour
 
     protected List<Collider> colliders = new List<Collider>();
 
+    protected List<Collider> hit = new List<Collider>();
+
+    protected bool isAttacking = false;
+
     private void Start ()
     {
         box = GetComponent<BoxCollider>();
@@ -17,26 +21,60 @@ public class PlayerAttack : MonoBehaviour
 
     public void Attack ()
     {
-        foreach (Collider col in colliders)
+        hit.Clear();
+        isAttacking = true;
+
+        for (int i = colliders.Count-1; i >= 0; i--)
         {
-            if (col.tag == "Enemy")
+            Collider col = colliders[i];
+
+            hit.Add(col);
+            if (col.GetComponent<Health>().ChangeHealth(-15))
             {
-                col.GetComponent<Health>().ChangeHealth(-20);
+                colliders.RemoveAt(i);
+            }
+            else
+            {
                 Instantiate(impact, col.transform.position + Vector3.up, col.transform.rotation, col.transform);
             }
         }
     }
 
-    private void OnTriggerEnter (Collider other)
+    public void StopAttack ()
     {
-        Debug.Log("Enter " + other.name);
-        colliders.Add(other);
+        isAttacking = false;
     }
 
-    private void OnTriggerExit (Collider other)
+    private void OnTriggerEnter (Collider col)
     {
-        Debug.Log("Exit " + other.name);
-        // TODO: check exit works when player dies
-        colliders.Remove(other);
+        if (col.tag == "Enemy")
+        {
+            // if we're attacking and we didn't hit it already
+            if (isAttacking && !hit.Contains(col))
+            {
+                hit.Add(col);
+                if (col.GetComponent<Health>().ChangeHealth(-15))
+                {
+                    // don't add
+                }
+                else
+                {
+                    colliders.Add(col);
+                    Instantiate(impact, col.transform.position + Vector3.up, col.transform.rotation, col.transform);
+                }
+            }
+            else
+            {
+                colliders.Add(col);
+            }
+        }
+    }
+
+    private void OnTriggerExit (Collider col)
+    {
+        if (col.tag == "Enemy")
+        {
+            colliders.Remove(col);
+        }
     }
 }

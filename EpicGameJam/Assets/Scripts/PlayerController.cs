@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     protected Vignette vignette;
 
-    public float attackSpeed = 1f;
+    public float attackSpeed = 1.5f;
     public float attackTime = 0.5f;
     protected bool isAttacking = false;
     protected float lastAttack;
@@ -140,6 +140,7 @@ public class PlayerController : MonoBehaviour
     {
         sword.localScale = new Vector3(1, 1f, 1);
         isAttacking = false;
+        attack.StopAttack();
     }
 
     private void OnTriggerEnter(Collider other) 
@@ -167,7 +168,7 @@ public class PlayerController : MonoBehaviour
         interactableScript = null;
         informationBox.Hide();
     }
-    public void ChangeHealth (float value)
+    public bool ChangeHealth (float value)
     {
         health += value;
         health = Mathf.Clamp(health, 0, maxHealth);
@@ -175,10 +176,13 @@ public class PlayerController : MonoBehaviour
         if (health == 0)
         {
             Die();
+            return true;
         }
 
         postProcess.profile.TryGetSettings(out vignette);
         vignette.intensity.value = Mathf.Lerp(0, 0.5f, 1f - (health / maxHealth));
+
+        return false;
     }
 
     public void Die ()

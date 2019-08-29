@@ -25,24 +25,37 @@ public class ZombieAttack : MonoBehaviour
 
     public void Attack ()
     {
-        foreach (Collider col in colliders)
+        for (int i = colliders.Count-1; i >= 0; i--)
         {
+            Collider col = colliders[i];
+
             if (col.tag == "Player")
             {
-                PlayerController.instance.ChangeHealth(-20);
-                Instantiate(impact, PlayerController.instance.RayCaster.position, PlayerController.instance.RayCaster.rotation, PlayerController.instance.RayCaster);
+                if (PlayerController.instance.ChangeHealth(-20))
+                {
+                    colliders.RemoveAt(i);
+                }
+                else
+                {
+                    Instantiate(impact, PlayerController.instance.RayCaster.position, PlayerController.instance.RayCaster.rotation, PlayerController.instance.RayCaster);
+                }
             }
         }
     }
 
-    private void OnTriggerEnter (Collider other)
+    private void OnTriggerEnter (Collider col)
     {
-        colliders.Add(other);
+        if (col.tag == "Player")
+        {
+            colliders.Add(col);
+        }
     }
 
-    private void OnTriggerExit (Collider other)
+    private void OnTriggerExit (Collider col)
     {
-        // TODO: check exit works when player dies
-        colliders.Remove(other);
+        if (col.tag == "Player")
+        {
+            colliders.Remove(col);
+        }
     }
 }

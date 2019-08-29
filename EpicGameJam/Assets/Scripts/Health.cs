@@ -13,7 +13,7 @@ public class Health : MonoBehaviour
         health = maxHealth;
     }
 
-    public void ChangeHealth (float value)
+    public bool ChangeHealth (float value)
     {
         health += value;
         health = Mathf.Clamp(health, 0, maxHealth);
@@ -21,11 +21,15 @@ public class Health : MonoBehaviour
         if (health == 0)
         {
             Die();
+            return true;
         }
+
+        return false;
     }
 
     public void Die ()
     {
         Debug.Log("Dead");
+        Destroy(gameObject);
     }
 }

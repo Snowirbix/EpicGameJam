@@ -473,7 +473,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 0
   postProcess: {fileID: 994393935}
-  attackSpeed: 1
+  attackSpeed: 1.5
   attackTime: 0.5
   attack: {fileID: 1728420582}
 --- !u!143 &250047525
@@ -2533,8 +2533,8 @@ GameObject:
   - component: {fileID: 1728420583}
   - component: {fileID: 1728420582}
   m_Layer: 10
-  m_Name: Attack
-  m_TagString: Player
+  m_Name: PlayerAttack
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
