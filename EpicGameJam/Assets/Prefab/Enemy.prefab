@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8976905204566898218}
   - component: {fileID: 7730836563930615855}
   - component: {fileID: 8581718206793693714}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 5452865239883622118}
   - component: {fileID: 5452865239883622113}
   - component: {fileID: 5452865239883622112}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 5452865240144708763}
   - component: {fileID: 5452865240144708762}
   - component: {fileID: 5452865240144708757}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,3 +254,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 3
+  rayCaster: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  range: 15
+  projectilePrefab: {fileID: 0}

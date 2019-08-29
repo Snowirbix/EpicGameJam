@@ -26,7 +26,6 @@ public class From2Dto3D : MonoBehaviour
     public struct CameraSettings
     {
         public Vector3 position;
-        public float tilt;
         public float fov;
         public int pixelation;
     }
@@ -59,8 +58,9 @@ public class From2Dto3D : MonoBehaviour
             float fov = Mathf.Lerp(camera2D.fov, camera3D.fov, ratioCurve.Evaluate(ratio));
 
             camera.fieldOfView = fov;
-            camera.transform.localPosition = camera3D.position.normalized * camera2D.position.magnitude / fov;
-            //camera.transform.localRotation = Quaternion.Euler(Mathf.Lerp(camera2D.tilt, camera3D.tilt, r), 0, 0);
+            Vector3 dir = Vector3.Lerp(camera2D.position.normalized, camera3D.position.normalized, ratio);
+            camera.transform.localPosition = dir * camera2D.position.magnitude / fov;
+            camera.transform.localRotation = Quaternion.LookRotation(-dir);
             int pixels = (int)Mathf.Lerp(camera2D.pixelation, 1, ratio);
 
             if (pixels == 1)
