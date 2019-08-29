@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac9ac2fdce614064a827459fc1039e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: City
+  sceneName: TutorialIndoor
   onStart: 1
 --- !u!1 &221671243
 GameObject:
@@ -507,7 +507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera2D:
-    position: {x: 0, y: 355, z: -355}
+    position: {x: 0, y: 710, z: -710}
     fov: 1
     pixelation: 5
   camera3D:
@@ -855,7 +855,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 1200
   field of view: 1
   orthographic: 0
   orthographic size: 5

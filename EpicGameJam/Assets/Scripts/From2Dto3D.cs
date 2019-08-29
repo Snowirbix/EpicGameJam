@@ -50,10 +50,6 @@ public class From2Dto3D : MonoBehaviour
 
     private void Update ()
     {
-        if (Input.GetKey(KeyCode.T))
-        {
-            StartTransformation();
-        }
         if (transforming)
         {
             ratio = Mathf.Min((Time.time - startTime) / duration, 1);
