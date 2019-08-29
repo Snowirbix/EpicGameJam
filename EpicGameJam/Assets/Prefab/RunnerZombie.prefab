@@ -48,8 +48,8 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 329580683}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -138,7 +138,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e847126460e0fb74d8327b76d718ff86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderers: []
+  renderers:
+  - {fileID: 2072859976}
+  - {fileID: 1455533522}
+  - {fileID: 329580686}
 --- !u!1 &1455533519
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,8 +190,8 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1455533519}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -265,8 +268,8 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2072859973}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -341,7 +344,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 7
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 360000
@@ -369,8 +372,8 @@ MonoBehaviour:
   range: 2
   attackSpeed: 1
   prediction: 0.3
-  randomness: 20
-  attackObject: {fileID: 0}
+  randomness: 40
+  attackObject: {fileID: 680084667}
 --- !u!1 &3049444504789422705
 GameObject:
   m_ObjectHideFlags: 0

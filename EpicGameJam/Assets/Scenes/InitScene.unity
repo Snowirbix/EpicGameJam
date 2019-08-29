@@ -463,7 +463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   axes: {x: 0, y: 0}
   speed: 7
-  rotator: {fileID: 94049603}
+  rotator: {fileID: 1134634529}
   pauseMenu: {fileID: 2096204222}
   prediction: {x: 0, y: 0, z: 0}
 --- !u!143 &250047525
@@ -2444,6 +2444,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: hero_animated_bake
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 54bea124336b6384b886db082b10f862,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0d7577b91c2e1af4a8d7a810f540c40c, type: 2}
     - target: {fileID: -4216859302048453862, guid: 54bea124336b6384b886db082b10f862,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2499,11 +2504,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 54bea124336b6384b886db082b10f862,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 0d7577b91c2e1af4a8d7a810f540c40c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54bea124336b6384b886db082b10f862, type: 3}
 --- !u!1 &1802563382
