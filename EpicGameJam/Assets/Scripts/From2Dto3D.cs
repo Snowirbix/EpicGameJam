@@ -30,9 +30,13 @@ public class From2Dto3D : MonoBehaviour
         public int pixelation;
     }
 
-    private void Start ()
+    private void Awake ()
     {
         Application.targetFrameRate = 30;
+    }
+    
+    private void Start ()
+    {
         fontChanger = GetComponent<FontChanger>();
         camera = cam.GetComponent<Camera>();
         pixelate = cam.GetComponent<Pixelate>();

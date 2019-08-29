@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 
 public class Tutorial : MonoBehaviour
 {
@@ -19,7 +21,7 @@ public class Tutorial : MonoBehaviour
 
     bool left,right = false;
 
-    bool fadeInComplete = false;
+    //bool fadeInComplete = false;
     MessageBox.Message msg;
 
     Vector3 initialPosition = new Vector3(0,0.09f,-4f);
@@ -48,7 +50,7 @@ public class Tutorial : MonoBehaviour
 
         if(firstStep)
         {
-            FadeOut();
+            StartCoroutine(FadeOut());
             if(PlayerController.instance.axes.y == 1)
             {
                 firstStep = false;
@@ -92,50 +94,47 @@ public class Tutorial : MonoBehaviour
 
         if(fourthStep)
         {
-            if(fade.color.a !=1f && !fadeInComplete)
-            {
-                FadeIn();
-            }
-            else
-            {
-                FadeOut();
-            }
-
-            if(fadeInComplete)
-            {
-                PlayerController.instance.transform.SetPositionAndRotation(initialPosition, Quaternion.identity);
-                fourthStep = false;
-            }
+            fourthStep = false;
+            StopAllCoroutines();
+            StartCoroutine(FadeInAndOut());
         }
     }
 
-    void FadeOut()
+    protected IEnumerator FadeOut ()
     {
-        if(fade.color.a != 0f)
+        while (fade.color.a > 0f)
         {
-            fade.color = new Color(fade.color.r, fade.color.g , fade.color.b , fade.color.a - 0.005f);
+            fade.color = new Color(fade.color.r, fade.color.g , fade.color.b , fade.color.a - Time.deltaTime);
+            yield return null;
         }
-        else
+        fade.gameObject.SetActive(false);
+    }
+
+    protected IEnumerator FadeIn ()
+    {
+        fade.gameObject.SetActive(true);
+        while (fade.color.a < 1f)
         {
-            fade.gameObject.SetActive(false);
+            fade.color = new Color(fade.color.r, fade.color.g , fade.color.b , fade.color.a + Time.deltaTime);
+            yield return null;
         }
     }
 
-    void FadeIn()
+    protected IEnumerator FadeInAndOut ()
     {
-        if(!fade.gameObject.activeInHierarchy)
+        fade.gameObject.SetActive(true);
+        while (fade.color.a < 1f)
         {
-            fade.gameObject.SetActive(true);
+            fade.color = new Color(fade.color.r, fade.color.g , fade.color.b , fade.color.a + Time.deltaTime);
+            yield return null;
         }
-
-        if(fade.color.a != 1f)
+        yield return new WaitForSeconds(1f);
+        PlayerController.instance.transform.SetPositionAndRotation(initialPosition, Quaternion.identity);
+        while (fade.color.a > 0f)
         {
-            fade.color = new Color(fade.color.r, fade.color.g , fade.color.b , fade.color.a + 0.005f);
+            fade.color = new Color(fade.color.r, fade.color.g , fade.color.b , fade.color.a - Time.deltaTime);
+            yield return null;
         }
-
-        if(fade.color.a == 1f)
-        {
-            fadeInComplete = true;
-        }
+        fade.gameObject.SetActive(false);
     }
 }
