@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MrBananaFirst
   m_EditorClassIdentifier: 
   messageTitle: Mr Banana
-  messagecontent:
-  - Hey, I would love to get a banana !
-  timer: 2
+  messageContent:
+  - text: GIVE ME MY BANANAAAAAAAAAAAAA !
+    timer: 2
