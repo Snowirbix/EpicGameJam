@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
 {
+    public static Tutorial instance;
     public Options options;
     public MessageObject[] StepQ;
 
@@ -10,7 +11,7 @@ public class Tutorial : MonoBehaviour
 
     private MessageObject[] Step;
 
-    bool firstStep, secondStep, thirdStep = false;
+    public bool firstStep, secondStep, thirdStep, fourthStep = false;
     
     public Image fade;
 
@@ -18,10 +19,16 @@ public class Tutorial : MonoBehaviour
 
     bool left,right = false;
 
+    bool fadeInComplete = false;
     MessageBox.Message msg;
 
+    Vector3 initialPosition = new Vector3(0,0.09f,-4f);
     void Start()
     {
+        instance = this;
+
+        PlayerController.instance.transform.SetPositionAndRotation(initialPosition, Quaternion.identity);
+
         if(options.keyboard == Options.Keyboard.QWERTY)
         {
             Step = StepQ;
@@ -38,17 +45,10 @@ public class Tutorial : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(fade.color.a != 0f)
-        {
-            fade.color = new Color(fade.color.r, fade.color.g , fade.color.b , fade.color.a - 0.005f);
-        }
-        else
-        {
-            fade.gameObject.SetActive(false);
-        }
 
         if(firstStep)
         {
+            FadeOut();
             if(PlayerController.instance.axes.y == 1)
             {
                 firstStep = false;
@@ -88,6 +88,54 @@ public class Tutorial : MonoBehaviour
                 msg = new MessageBox.Message(Step[2].messageTitle, Step[2].messageContent);
                 MessageBox.instance.Display(msg);
             }
+        }
+
+        if(fourthStep)
+        {
+            if(fade.color.a !=1f && !fadeInComplete)
+            {
+                FadeIn();
+            }
+            else
+            {
+                FadeOut();
+            }
+
+            if(fadeInComplete)
+            {
+                PlayerController.instance.transform.SetPositionAndRotation(initialPosition, Quaternion.identity);
+                fourthStep = false;
+            }
+        }
+    }
+
+    void FadeOut()
+    {
+        if(fade.color.a != 0f)
+        {
+            fade.color = new Color(fade.color.r, fade.color.g , fade.color.b , fade.color.a - 0.005f);
+        }
+        else
+        {
+            fade.gameObject.SetActive(false);
+        }
+    }
+
+    void FadeIn()
+    {
+        if(!fade.gameObject.activeInHierarchy)
+        {
+            fade.gameObject.SetActive(true);
+        }
+
+        if(fade.color.a != 1f)
+        {
+            fade.color = new Color(fade.color.r, fade.color.g , fade.color.b , fade.color.a + 0.005f);
+        }
+
+        if(fade.color.a == 1f)
+        {
+            fadeInComplete = true;
         }
     }
 }

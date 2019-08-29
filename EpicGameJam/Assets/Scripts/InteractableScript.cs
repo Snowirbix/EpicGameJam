@@ -11,7 +11,7 @@ public class InteractableScript : MonoBehaviour
         }
     }
 
-    public void Interact()
+    public virtual void Interact()
     {
         MessageBox.instance.Display(new MessageBox.Message(messageObject.messageTitle , messageObject.messageContent));
     }
