@@ -60,6 +60,8 @@ public class PlayerController : MonoBehaviour
 
     public PlayerAttack attack;
 
+    protected float animSpeed = 0;
+
     private void Awake ()
     {
         instance = this;
@@ -112,6 +114,17 @@ public class PlayerController : MonoBehaviour
                 // gravity if the player is above the ground
                 prediction.y = transform.position.y > 0.2f ? -1 : 0;
                 character.Move(prediction * Time.deltaTime);
+                
+                if (axes.Equals(Vector3.zero))
+                {
+                    animSpeed -= Time.deltaTime*5f;
+                }
+                else
+                {
+                    animSpeed += Time.deltaTime*5f;
+                }
+                animSpeed = Mathf.Clamp01(animSpeed);
+                animator.SetFloat("speed", animSpeed);
             }
 
             Direction();

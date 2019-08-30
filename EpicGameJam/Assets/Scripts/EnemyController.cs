@@ -49,43 +49,68 @@ public class EnemyController : MonoBehaviour
             if (Vector3.Distance(playerPos, agent.destination) > sensitivity)
             {
                 agent.isStopped = false;
+                agent.updateRotation = true;
                 agent.SetDestination(playerPos);
+                //Debug.Log("Move towards player");
             }
         }
-        if (distance < range * 0.5f)
+        else if (distance < range * 0.5f)
         {
-            Vector3 newPos = transform.position + (-dir * 3);
-            NavMeshHit navHit;
-
-            if (NavMesh.SamplePosition(newPos, out navHit, 2.5f, NavMesh.AllAreas))
+            RaycastHit sphereHitInfo;
+            float radius = 1;
+            bool sphereHit = Physics.SphereCast(rayCaster.position, radius, dir, out sphereHitInfo, range, layerMask);
+            
+            // LOS
+            if (sphereHit && ((1 << sphereHitInfo.transform.gameObject.layer) & playerLayer) != 0)
             {
-                Vector3 result = navHit.position;
-                
-                RaycastHit hitInfo;
-                // allow the zombie to not move away if it loses the LOS
-                bool hit = Physics.Raycast(result + Vector3.up, dir, out hitInfo, range, layerMask);
-                
-                // LOS
-                if (hit && ((1 << hitInfo.transform.gameObject.layer) & playerLayer) != 0)
+                Vector3 newPos = transform.position + (-dir * 4);
+                NavMeshHit navHit;
+
+                if (NavMesh.SamplePosition(newPos, out navHit, 4f, NavMesh.AllAreas))
                 {
-                    agent.SetDestination(result);
+                    Vector3 result = navHit.position;
+                    
+                    RaycastHit rayHitInfo;
+                    // allow the zombie to not move away if it loses the LOS
+                    bool rayHit = Physics.SphereCast(result + Vector3.up, radius, dir, out rayHitInfo, range+4f, layerMask);
+                    
+                    // LOS
+                    if (rayHit && ((1 << rayHitInfo.transform.gameObject.layer) & playerLayer) != 0)
+                    {
+                        agent.isStopped = false;
+                        agent.updateRotation = true;
+                        agent.SetDestination(result);
+                        Debug.DrawRay(result + Vector3.up, playerPos - result, Color.blue, Time.deltaTime*2);
+                    }
+                    else
+                    {
+                        // what if it is close to the player but has no LOS
+                        Debug.DrawRay(result + Vector3.up, playerPos - result, Color.red, Time.deltaTime*2);
+                        agent.isStopped = true;
+                        agent.updateRotation = false;
+                        // add prediction
+                        float predictionTime = prediction * (distance / range);
+                        Vector3 predictedDir = ((playerPos + PlayerController.instance.prediction * predictionTime) - transform.position).normalized;
+
+                        if (Time.time > lastAttack + (1/attackSpeed))
+                            Shoot(new Vector2(predictedDir.x, predictedDir.z));
+                    }
                 }
                 else
                 {
-                    Debug.Log("Raycast " + hitInfo.transform.name);
-                    // add prediction
-                    float predictionTime = prediction * (distance / range);
-                    Vector3 predictedDir = ((playerPos + PlayerController.instance.prediction * predictionTime) - transform.position).normalized;
-
-                    if (Time.time > lastAttack + (1/attackSpeed))
-                        Shoot(new Vector2(predictedDir.x, predictedDir.z));
+                    Debug.Log("SamplePosition failed");
                 }
             }
             else
             {
-                Debug.Log("SamplePosition failed");
+                if (playerPos != agent.destination)
+                {
+                    //Debug.Log("No LOS, moving forward");
+                    agent.isStopped = false;
+                    agent.updateRotation = true;
+                    agent.SetDestination(playerPos);
+                }
             }
-
         }
         else
         {
@@ -94,9 +119,11 @@ public class EnemyController : MonoBehaviour
             bool hit = Physics.SphereCast(rayCaster.position, radius, dir, out hitInfo, range, layerMask);
             
             // LOS
-            if (hit && hitInfo.transform == PlayerController.instance.transform)
+            if (hit && ((1 << hitInfo.transform.gameObject.layer) & playerLayer) != 0)
             {
+                //Debug.Log("LOS, shooting");
                 agent.isStopped = true;
+                agent.updateRotation = false;
 
                 // add prediction
                 float predictionTime = prediction * (distance / range);
@@ -107,12 +134,19 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                if (Vector3.Distance(playerPos, agent.destination) > sensitivity / 2)
+                if (playerPos != agent.destination)
                 {
+                    //Debug.Log("No LOS, moving forward");
                     agent.isStopped = false;
+                    agent.updateRotation = true;
                     agent.SetDestination(playerPos);
                 }
             }
+        }
+        
+        if (!agent.updateRotation)
+        {
+            transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(dir2.x, dir2.y) * Mathf.Rad2Deg, Vector3.up);
         }
     }
 
