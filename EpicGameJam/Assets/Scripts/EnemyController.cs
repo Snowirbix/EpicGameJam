@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     public Transform rayCaster;
 
     public LayerMask layerMask;
+    public LayerMask playerLayer;
 
     public float range = 15f;
 
@@ -54,13 +55,37 @@ public class EnemyController : MonoBehaviour
         if (distance < range * 0.5f)
         {
             Vector3 newPos = transform.position + (-dir * 3);
-            NavMeshHit hit;
+            NavMeshHit navHit;
 
-            if (NavMesh.SamplePosition(newPos, out hit, 3.5f, NavMesh.AllAreas))
+            if (NavMesh.SamplePosition(newPos, out navHit, 2.5f, NavMesh.AllAreas))
             {
-                Vector3 result = hit.position;
-                agent.SetDestination(result);
+                Vector3 result = navHit.position;
+                
+                RaycastHit hitInfo;
+                // allow the zombie to not move away if it loses the LOS
+                bool hit = Physics.Raycast(result + Vector3.up, dir, out hitInfo, range, layerMask);
+                
+                // LOS
+                if (hit && ((1 << hitInfo.transform.gameObject.layer) & playerLayer) != 0)
+                {
+                    agent.SetDestination(result);
+                }
+                else
+                {
+                    Debug.Log("Raycast " + hitInfo.transform.name);
+                    // add prediction
+                    float predictionTime = prediction * (distance / range);
+                    Vector3 predictedDir = ((playerPos + PlayerController.instance.prediction * predictionTime) - transform.position).normalized;
+
+                    if (Time.time > lastAttack + (1/attackSpeed))
+                        Shoot(new Vector2(predictedDir.x, predictedDir.z));
+                }
             }
+            else
+            {
+                Debug.Log("SamplePosition failed");
+            }
+
         }
         else
         {
