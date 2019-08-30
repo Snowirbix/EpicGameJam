@@ -206,7 +206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5452865240144708763
 Transform:
   m_ObjectHideFlags: 0
@@ -234,7 +234,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 4
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 360000
@@ -263,11 +263,14 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 1025
-  range: 15
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  range: 20
   projectilePrefab: {fileID: 9142142856197684259, guid: bc4cd896c4637f64e8c4375a4c45929f,
     type: 3}
   projectileSpeed: 15
-  attackSpeed: 1
+  attackSpeed: 0.5
   prediction: 0.6
   randomness: 20
 --- !u!136 &2703529626612426241
