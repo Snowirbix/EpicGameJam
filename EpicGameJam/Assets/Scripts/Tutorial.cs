@@ -125,7 +125,7 @@ public class Tutorial : MonoBehaviour
         fade.gameObject.SetActive(true);
         while (fade.color.a < 1f)
         {
-            fade.color = new Color(fade.color.r, fade.color.g , fade.color.b , fade.color.a + 0.02f);
+            fade.color = new Color(fade.color.r, fade.color.g , fade.color.b , fade.color.a + 0.05f);
             yield return null;
         }
 
@@ -141,12 +141,13 @@ public class Tutorial : MonoBehaviour
         PlayerController.instance.transform.SetPositionAndRotation(initialPosition, Quaternion.identity);
         while (fade.color.a > 0f)
         {
-            fade.color = new Color(fade.color.r, fade.color.g , fade.color.b , fade.color.a - 0.01f);
+            fade.color = new Color(fade.color.r, fade.color.g , fade.color.b , fade.color.a - 0.02f);
             yield return null;
         }
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         fade.gameObject.SetActive(false);
         transition.StartTransformation();
+        
     }
 
     protected IEnumerator FadeOut ()

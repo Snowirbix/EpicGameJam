@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerControls controls;
     protected CharacterController character;
 
+    public GameObject DeathScreen;
     public Transform RayCaster;
 
     public Animator animator;
@@ -236,6 +237,7 @@ public class PlayerController : MonoBehaviour
 
     public void Die ()
     {
-        Debug.Log("You are dead");
+        DeathScreen.SetActive(true);
+        animator.SetTrigger("Death");
     }
 }
