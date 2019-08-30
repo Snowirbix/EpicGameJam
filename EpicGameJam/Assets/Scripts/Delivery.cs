@@ -12,6 +12,7 @@ public class Delivery : MonoBehaviour
     public void Next ()
     {
         currentTarget++;
+        Debug.Log("current: " + currentTarget.ToString() + "length: " + targets.Length.ToString());
         if (currentTarget == targets.Length)
         {
             // Start new phase
@@ -21,7 +22,16 @@ public class Delivery : MonoBehaviour
 
     private void Update ()
     {
-        Vector3 direction = targets[currentTarget].position - transform.position;
-        arrowDirection.transform.localRotation = Quaternion.AngleAxis(Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg, Vector3.up);
+        if(targets.Length != 0)
+        {
+            arrowDirection.SetActive(true);
+            Vector3 direction = targets[currentTarget].position - transform.position;
+            arrowDirection.transform.localRotation = Quaternion.AngleAxis(Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg, Vector3.up); 
+        }
+        else
+        {
+            arrowDirection.SetActive(false);
+        }
+
     }
 }

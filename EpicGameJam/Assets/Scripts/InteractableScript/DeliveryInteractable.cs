@@ -14,14 +14,22 @@ public class DeliveryInteractable : InteractableScript
     // Update is called once per frame
     void Update()
     {
-        if(delivery.targets[delivery.currentTarget] == gameObject.transform)
+        if(delivery.currentTarget == delivery.targets.Length)
         {
-            gameObject.tag = "interactable";
+            gameObject.SetActive(false);
         }
         else
         {
-            gameObject.tag = "Untagged";
+            if(delivery.targets[delivery.currentTarget] == gameObject.transform)
+            {
+                gameObject.tag = "interactable";
+            }
+            else
+            {
+                gameObject.tag = "Untagged";
+            }
         }
+        
     }
 
     public override void Interact()
