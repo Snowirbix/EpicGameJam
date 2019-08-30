@@ -475,6 +475,8 @@ MonoBehaviour:
   postProcess: {fileID: 994393935}
   attackSpeed: 1.5
   attackTime: 0.5
+  rollingDuration: 0.4
+  rollingCd: 4
   attack: {fileID: 1728420582}
 --- !u!143 &250047525
 CharacterController:

@@ -48,6 +48,14 @@ public class PlayerControls : IInputActionCollection
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Roll"",
+                    ""type"": ""Button"",
+                    ""id"": ""610a2463-c6fe-4809-ba92-c5a1b7c10953"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -193,6 +201,28 @@ public class PlayerControls : IInputActionCollection
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b18d0fe-1abd-45e4-b718-c1c1c21e0fc7"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6a1db955-d651-43cd-8cdc-0232e6ea8b3b"",
+                    ""path"": ""<Keyboard>/rightCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -205,6 +235,7 @@ public class PlayerControls : IInputActionCollection
         m_Gameplay_Interact = m_Gameplay.GetAction("Interact");
         m_Gameplay_Pause = m_Gameplay.GetAction("Pause");
         m_Gameplay_Attack = m_Gameplay.GetAction("Attack");
+        m_Gameplay_Roll = m_Gameplay.GetAction("Roll");
     }
 
     ~PlayerControls()
@@ -258,6 +289,7 @@ public class PlayerControls : IInputActionCollection
     private readonly InputAction m_Gameplay_Interact;
     private readonly InputAction m_Gameplay_Pause;
     private readonly InputAction m_Gameplay_Attack;
+    private readonly InputAction m_Gameplay_Roll;
     public struct GameplayActions
     {
         private PlayerControls m_Wrapper;
@@ -266,6 +298,7 @@ public class PlayerControls : IInputActionCollection
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
         public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
+        public InputAction @Roll => m_Wrapper.m_Gameplay_Roll;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -287,6 +320,9 @@ public class PlayerControls : IInputActionCollection
                 Attack.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
                 Attack.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
                 Attack.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
+                Roll.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRoll;
+                Roll.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRoll;
+                Roll.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRoll;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -303,6 +339,9 @@ public class PlayerControls : IInputActionCollection
                 Attack.started += instance.OnAttack;
                 Attack.performed += instance.OnAttack;
                 Attack.canceled += instance.OnAttack;
+                Roll.started += instance.OnRoll;
+                Roll.performed += instance.OnRoll;
+                Roll.canceled += instance.OnRoll;
             }
         }
     }
@@ -313,5 +352,6 @@ public class PlayerControls : IInputActionCollection
         void OnInteract(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+        void OnRoll(InputAction.CallbackContext context);
     }
 }

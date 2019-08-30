@@ -53,6 +53,11 @@ public class PlayerController : MonoBehaviour
     protected bool isAttacking = false;
     protected float lastAttack;
 
+    public float rollingDuration = 0.4f;
+    public float rollingCd = 4f;
+    protected bool isRolling = false;
+    protected float lastRollin;
+
     public PlayerAttack attack;
 
     private void Awake ()
@@ -65,6 +70,7 @@ public class PlayerController : MonoBehaviour
         controls.Gameplay.Move.canceled  += ctx => axes = Vector2.zero;
         controls.Gameplay.Interact.performed += ctx => Interact();
         controls.Gameplay.Attack.performed += ctx => Attack();
+        controls.Gameplay.Roll.performed += ctx => Roll();
         controls.Gameplay.Pause.performed += ctx => pauseMenu.PauseGame();
     }
 
@@ -88,10 +94,26 @@ public class PlayerController : MonoBehaviour
     {
         if(!Pause.gameIsPaused)
         {
-            prediction = new Vector3(axes.x, 0, axes.y) * speed;
-            // gravity if the player is above the ground
-            prediction.y = transform.position.y > 0.2f ? -1 : 0;
-            character.Move(prediction * Time.deltaTime);
+            if (isRolling)
+            {
+                prediction = new Vector3(lastDirection.x, 0, lastDirection.y) * speed * 2;
+                // gravity if the player is above the ground
+                prediction.y = transform.position.y > 0.2f ? -1 : 0;
+                character.Move(prediction * Time.deltaTime);
+
+                if (Time.time > lastRollin + rollingDuration)
+                {
+                    isRolling = false;
+                }
+            }
+            else
+            {
+                prediction = new Vector3(axes.x, 0, axes.y) * speed;
+                // gravity if the player is above the ground
+                prediction.y = transform.position.y > 0.2f ? -1 : 0;
+                character.Move(prediction * Time.deltaTime);
+            }
+
             Direction();
             rotator.rotation = Quaternion.AngleAxis(Mathf.Atan2(lastDirection.x, lastDirection.y) * Mathf.Rad2Deg, Vector3.up);
         }
@@ -107,6 +129,10 @@ public class PlayerController : MonoBehaviour
         Vector2 direction = new Vector2(axes.x,axes.y);
 
         if(direction == Vector2.zero)
+        {
+            return;
+        }
+        if (isRolling)
         {
             return;
         }
@@ -141,6 +167,16 @@ public class PlayerController : MonoBehaviour
         sword.localScale = new Vector3(1, 1f, 1);
         isAttacking = false;
         attack.StopAttack();
+    }
+
+    protected void Roll ()
+    {
+        if (Time.time > lastRollin + rollingCd)
+        {
+            animator.SetTrigger("Roll");
+            lastRollin = Time.time;
+            isRolling = true;
+        }
     }
 
     private void OnTriggerEnter(Collider other) 
