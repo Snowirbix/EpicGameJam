@@ -177,5 +177,7 @@ public class EnemyController : MonoBehaviour
 
         GameObject projectile = Instantiate(projectilePrefab, rayCaster.position, rayCaster.rotation);
         projectile.GetComponent<Rigidbody>().AddForce(new Vector3(dir.x, 0, dir.y) * projectileSpeed, ForceMode.Impulse);
+
+        animator.SetTrigger("attack");
     }
 }

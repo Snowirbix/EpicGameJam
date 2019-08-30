@@ -117,6 +117,8 @@ public class RunnerController : MonoBehaviour
         float angle = Random.Range(-randomness/2, randomness/2);
         Quaternion quat = Quaternion.Euler(0, angle, 0);
         transform.localRotation *= quat;
+
+        animator.SetTrigger("attack");
     }
 
     protected void StopAttack ()
