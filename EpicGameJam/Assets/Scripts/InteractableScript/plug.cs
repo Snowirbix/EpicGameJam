@@ -5,10 +5,16 @@ using UnityEngine;
 public class plug : InteractableScript
 {
     protected bool once = true;
+
+    void Start()
+    {
+        gameObject.tag = "Untagged";
+    }
     void Update()
     {
         if(Tutorial.instance.secondStep && once)
         {
+            gameObject.tag = "interactable";
             PlayerController.instance.transform.GetComponent<Delivery>().enabled = true;
             PlayerController.instance.transform.GetComponent<Delivery>().targets = new Transform[]{gameObject.transform};
             once = false;

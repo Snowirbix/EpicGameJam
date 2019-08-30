@@ -48,14 +48,14 @@ public class Tutorial : MonoBehaviour
         msg = new MessageBox.Message(Step[0].messageTitle, Step[0].messageContent);
         MessageBox.instance.Display(msg);
         firstStep = true;
+        StartCoroutine(FadeOut());
     }
 
     void FixedUpdate()
     {
 
         if(firstStep)
-        {
-            StartCoroutine(FadeOut());
+        {   
             switch(PlayerController.instance.axes.x)
             {
                 case 1:
