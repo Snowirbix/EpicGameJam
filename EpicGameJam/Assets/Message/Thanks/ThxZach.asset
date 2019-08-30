@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e15388594789f04448aa1470ee4693ce, type: 3}
-  m_Name: ThanksSk
+  m_Name: ThxZach
   m_EditorClassIdentifier: 
-  messageTitle: Skyppy
+  messageTitle: Zach Hilton
   messageContent:
-  - text: Thank you, bastard :)
+  - text: Thanks for the delivery
     timer: 2
