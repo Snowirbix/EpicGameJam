@@ -4909,10 +4909,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6036339215901664394}
   - component: {fileID: 6036339215901664395}
+  - component: {fileID: 5228002728879850233}
   - component: {fileID: 3361380367113026360}
   - component: {fileID: 3682082355414128386}
   - component: {fileID: 5136003600684263856}
-  - component: {fileID: 5228002728879850233}
   m_Layer: 9
   m_Name: JumperZombie
   m_TagString: Enemy
@@ -4952,7 +4952,7 @@ NavMeshAgent:
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 360000
-  m_StoppingDistance: 2.5
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -4960,6 +4960,67 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 5
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5228002728879850233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6036339215901664389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca4deef8383dc334fae5a004be47d5e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensitivity: 3
+  range: 2.5
+  attackSpeed: 0.3
+  attackTime: 0.4
+  jumpCd: 3
+  jumpHeight:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 11.444495
+      outSlope: 11.444495
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.05784195
+    - serializedVersion: 3
+      time: 0.5
+      value: 3
+      inSlope: -0.00000037940643
+      outSlope: -0.00000037940643
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.15709972
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1025
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  prediction: 1
+  randomness: 20
+  attackObject: {fileID: 8760819684645851193}
+  animator: {fileID: 5271232183998969940}
+  particles: {fileID: 7603974442442042519}
 --- !u!136 &3361380367113026360
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5006,30 +5067,9 @@ MonoBehaviour:
   health: 0
   pendingDeath: 0
   disableComponents:
-  - {fileID: 0}
+  - {fileID: 5228002728879850233}
   - {fileID: 3361380367113026360}
   dying: {fileID: 6772875518400308861, guid: 5f7372b2bd7ea8e4faa4f6da8273a679, type: 3}
---- !u!114 &5228002728879850233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6036339215901664389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca4deef8383dc334fae5a004be47d5e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sensitivity: 3
-  range: 2
-  attackSpeed: 0.3
-  attackTime: 0.4
-  prediction: 1
-  randomness: 20
-  attackObject: {fileID: 8760819684645851193}
-  animator: {fileID: 5271232183998969940}
-  particles: {fileID: 7603974442442042519}
 --- !u!1 &8760819684645851192
 GameObject:
   m_ObjectHideFlags: 0
@@ -5057,7 +5097,7 @@ Transform:
   m_GameObject: {fileID: 8760819684645851192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4, y: 1, z: 1.5}
+  m_LocalScale: {x: 2, y: 1, z: 1.2}
   m_Children:
   - {fileID: 8760819685501747652}
   - {fileID: 8760819685824936274}

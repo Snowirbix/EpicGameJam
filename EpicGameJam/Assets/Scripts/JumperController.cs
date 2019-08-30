@@ -5,11 +5,23 @@ public class JumperController : MonoBehaviour
 {
     public float sensitivity = 3;
 
-    public float range = 2f;
+    public float range = 3f;
 
-    public float attackSpeed = 0.3f;
+    public float attackSpeed = 0.5f;
 
-    public float attackTime = 0.4f;
+    public float attackTime = 0.6f;
+
+    public float jumpCd = 3;
+    public AnimationCurve jumpHeight;
+
+    protected float jumpTime;
+
+    protected Vector3 jumpDirection;
+
+    public LayerMask layerMask;
+    public LayerMask playerLayer;
+
+    protected bool isJumping = false;
 
     [Range(0, 2)]
     public float prediction = 1;
@@ -34,15 +46,33 @@ public class JumperController : MonoBehaviour
 
     public ParticleSystem particles;
 
+    protected Rigidbody rb;
+
     private void Start ()
     {
         agent = GetComponent<NavMeshAgent>();
         attack = attackObject.GetComponent<ZombieAttack>();
         attack.Render(false);
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update ()
     {
+        if (isJumping)
+        {
+            if (Time.time > jumpTime + 1)
+            {
+                isJumping = false;
+            }
+            else
+            {
+                Vector3 direction = jumpDirection;
+                direction.y = jumpHeight.Evaluate(Time.time - jumpTime);
+                transform.position += direction * Time.deltaTime * agent.speed * 3;
+                return;
+            }
+        }
+
         if (agent.isStopped)
         {
             animSpeed -= Time.deltaTime*5f;
@@ -72,13 +102,36 @@ public class JumperController : MonoBehaviour
             particles.Play();
             hasEmitted = true;
         }
-        if (distance > 10)
+        if (distance > 15)
         {
             if (Vector3.Distance(playerPos, agent.destination) > sensitivity)
             {
                 agent.isStopped = false;
                 agent.updateRotation = true;
                 agent.SetDestination(playerPos);
+            }
+        }
+        else if (distance > 10)
+        {
+            RaycastHit sphereHitInfo;
+            float radius = 1;
+            bool sphereHit = Physics.SphereCast(transform.position + Vector3.up, radius, dir, out sphereHitInfo, 15, layerMask);
+            
+            // LOS
+            if (sphereHit && ((1 << sphereHitInfo.transform.gameObject.layer) & playerLayer) != 0)
+            {
+                if (Time.time > jumpTime + jumpCd)
+                    Jump();
+            }
+            else
+            {
+                Debug.Log(sphereHitInfo.transform.name);
+                if (Vector3.Distance(playerPos, agent.destination) > sensitivity)
+                {
+                    agent.isStopped = false;
+                    agent.updateRotation = true;
+                    agent.SetDestination(playerPos);
+                }
             }
         }
         else if (distance > range)
@@ -127,5 +180,15 @@ public class JumperController : MonoBehaviour
         attack.Attack();
 
         isAttacking = false;
+    }
+
+    protected void Jump ()
+    {
+        isJumping = true;
+        agent.isStopped = true;
+        agent.updateRotation = false;
+        jumpDirection = (PlayerController.instance.transform.position - transform.position).normalized;
+        animator.SetTrigger("jump");
+        jumpTime = Time.time;
     }
 }
