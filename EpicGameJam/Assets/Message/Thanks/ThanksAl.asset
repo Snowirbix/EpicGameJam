@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageTitle: Alban
   messageContent:
-  - text: Thanks you man
+  - text: Thank you man
     timer: 2

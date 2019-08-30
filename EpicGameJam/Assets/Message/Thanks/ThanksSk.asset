@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageTitle: Skyppy
   messageContent:
-  - text: Thanks you, bastard :)
+  - text: Thank you, bastard :)
     timer: 2
