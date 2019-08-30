@@ -20,12 +20,15 @@ public class Tutorial : MonoBehaviour
 
     private Vector2 axes;
 
-    bool left,right = false;
+    bool left,right,up,down = false;
 
+    bool once = true;
     //bool fadeInComplete = false;
     MessageBox.Message msg;
 
     Vector3 initialPosition = new Vector3(0,0.09f,0);
+
+    float timer = 0f;
 
     void Start()
     {
@@ -53,18 +56,6 @@ public class Tutorial : MonoBehaviour
         if(firstStep)
         {
             StartCoroutine(FadeOut());
-            if(PlayerController.instance.axes.y == 1)
-            {
-                firstStep = false;
-                msg.sentences[1].Next();
-                msg = new MessageBox.Message(Step[1].messageTitle, Step[1].messageContent);
-                MessageBox.instance.Display(msg);
-                secondStep = true;
-            }
-        }
-
-        if(secondStep)
-        {
             switch(PlayerController.instance.axes.x)
             {
                 case 1:
@@ -75,30 +66,51 @@ public class Tutorial : MonoBehaviour
                 break;
             }
 
-            if(right && left)
+            switch(PlayerController.instance.axes.y)
             {
-                secondStep = false;
-                msg.sentences[2].Next();
-                thirdStep = true;
+                case 1:
+                up = true;
+                break;
+                case -1:
+                down = true;
+                break;
+            }
+
+            if(right && left && up && down)
+            {
+                firstStep = false;
+                msg.sentences[1].Next();
+                msg = new MessageBox.Message(Step[1].messageTitle, Step[1].messageContent);
+                MessageBox.instance.Display(msg);
+                secondStep = true;
             }
         }
 
         if (thirdStep)
         {
-            if(PlayerController.instance.axes.y == -1)
-            {
-                thirdStep = false;
-                msg.sentences[3].Next();
-                msg = new MessageBox.Message(Step[2].messageTitle, Step[2].messageContent);
-                MessageBox.instance.Display(msg);
-            }
+            thirdStep = false;
+            StopAllCoroutines();
+            StartCoroutine(FadeInAndOut());
+            timer = 0f;
+            fourthStep = true;
         }
 
         if(fourthStep)
         {
-            fourthStep = false;
-            StopAllCoroutines();
-            StartCoroutine(FadeInAndOut());
+            timer += Time.deltaTime;
+            if(timer >= 4f)
+            {
+                msg = new MessageBox.Message(Step[2].messageTitle, Step[2].messageContent);
+                MessageBox.instance.Display(msg);
+                fourthStep = false;
+            }
+        }
+
+        if(fifthStep && once)
+        {
+            once = false;
+            msg = new MessageBox.Message(Step[3].messageTitle, Step[3].messageContent);
+            MessageBox.instance.Display(msg);
         }
     }
 

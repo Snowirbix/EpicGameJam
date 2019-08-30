@@ -3732,10 +3732,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 69c20f6e3c795b54ab3be2e72b2ec78d, type: 2}
   - {fileID: 11400000, guid: 3df730b86e31d854d8837b6595780dd5, type: 2}
   - {fileID: 11400000, guid: 4e903638079f2d34b872a8a6a2824436, type: 2}
+  - {fileID: 11400000, guid: 7a88e369d96c03148a805a5cb9847892, type: 2}
   StepA:
   - {fileID: 11400000, guid: 4f8a1c0b9b3414640a208a304c0f19a7, type: 2}
   - {fileID: 11400000, guid: fdbd014eec8401443b52741a70df8dc2, type: 2}
   - {fileID: 11400000, guid: 4e903638079f2d34b872a8a6a2824436, type: 2}
+  - {fileID: 11400000, guid: 7a88e369d96c03148a805a5cb9847892, type: 2}
   firstStep: 0
   secondStep: 0
   thirdStep: 0

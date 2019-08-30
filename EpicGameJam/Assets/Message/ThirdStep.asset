@@ -13,12 +13,8 @@ MonoBehaviour:
   m_Name: ThirdStep
   m_EditorClassIdentifier: 
   messageTitle: Divine Voice
-  messagecontent:
-  - Yeah, I think you got it :p
-  - Let's try something else
-  timer: 1.5
   messageContent:
-  - text: Yeah, I think you got it :p
+  - text: Ahah, I got You :p
     timer: 1.5
-  - text: Let's try something else
-    timer: 1.5
+  - text: Now take this Backpack !
+    timer: 0
