@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BackPack : InteractableScript
 {
+    protected bool once = true;
     void Start()
     {
         gameObject.tag = "Untagged";
@@ -18,9 +19,11 @@ public class BackPack : InteractableScript
 
     void Update()
     {
-        if(Tutorial.instance.fourthStep == true)
+        if(Tutorial.instance.fourthStep == true && once)
         {
             gameObject.tag = "interactable";
+            PlayerController.instance.transform.GetComponent<Delivery>().targets = new Transform[]{gameObject.transform};
+            once = false;
         }
     }
 }

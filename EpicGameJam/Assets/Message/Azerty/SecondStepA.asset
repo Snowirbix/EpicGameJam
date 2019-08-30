@@ -13,18 +13,8 @@ MonoBehaviour:
   m_Name: SecondStepA
   m_EditorClassIdentifier: 
   messageTitle: Divine Voice
-  messagecontent:
-  - Yes ! Well done :)
-  - Sometimes the path is not straight forward.
-  - So you have to go Left and Right with "Q" and "D".
-  - If you're a coward you can go backward using "S".
-  timer: 2
   messageContent:
-  - text: Yes ! Well done :)
+  - text: Ok nice, You can also interact with "E"
     timer: 1.5
-  - text: Sometimes the path to the glory is not straight forward
-    timer: 2.5
-  - text: So you have to go Left and Right with "Q" and "D"
-    timer: 0
-  - text: If you are a coward, you can go backward using "S"
+  - text: Try to interact with that object right here
     timer: 0

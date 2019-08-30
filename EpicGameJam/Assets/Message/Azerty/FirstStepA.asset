@@ -13,12 +13,8 @@ MonoBehaviour:
   m_Name: FirstStepA
   m_EditorClassIdentifier: 
   messageTitle: Divine Voice
-  messagecontent:
-  - Wake up Hero ! Destiny is awaiting you !
-  - To move towards it, press "Z" !
-  timer: 2
   messageContent:
   - text: Wake up Hero ! Destiny is awaiting you !
     timer: 3
-  - text: To move towards it, press "Z" !
+  - text: You can move by pressing ZQSD !
     timer: 0

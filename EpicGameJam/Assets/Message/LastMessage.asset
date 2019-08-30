@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e15388594789f04448aa1470ee4693ce, type: 3}
-  m_Name: SecondStepQ
+  m_Name: LastMessage
   m_EditorClassIdentifier: 
   messageTitle: Divine Voice
   messageContent:
-  - text: Ok nice, you can also interact with "E"
+  - text: Perfect You're ready to Save the world now
     timer: 1.5
-  - text: Try to interact with that object right here
-    timer: 2.5
+  - text: Take this exit to join the real world
+    timer: 1
