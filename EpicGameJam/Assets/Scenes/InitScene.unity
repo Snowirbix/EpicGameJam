@@ -2567,7 +2567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1afb42a5c50dd140ac75865b1bce628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impact: {fileID: 4270984554398611669, guid: 77cd6df18585cc844a253433590d6661, type: 3}
+  impact: {fileID: 4270984554398611669, guid: bd1b440c6d1d95b4a9514828c6b8521a, type: 3}
 --- !u!65 &1728420583
 BoxCollider:
   m_ObjectHideFlags: 0

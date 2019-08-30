@@ -33,10 +33,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 colliders.RemoveAt(i);
             }
-            else
-            {
-                Instantiate(impact, col.transform.position + Vector3.up, col.transform.rotation, col.transform);
-            }
+            Instantiate(impact, col.transform.position + Vector3.up, col.transform.rotation, col.transform);
         }
     }
 
@@ -60,8 +57,8 @@ public class PlayerAttack : MonoBehaviour
                 else
                 {
                     colliders.Add(col);
-                    Instantiate(impact, col.transform.position + Vector3.up, col.transform.rotation, col.transform);
                 }
+                Instantiate(impact, col.transform.position + Vector3.up, col.transform.rotation, col.transform);
             }
             else
             {
