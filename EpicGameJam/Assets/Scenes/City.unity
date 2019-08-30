@@ -2197,11 +2197,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5452865240144708757, guid: f8a6b321c7c4c2c4aa2f95546e80c56a,
-        type: 3}
-      propertyPath: attackSpeed
-      value: 0.001
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8a6b321c7c4c2c4aa2f95546e80c56a, type: 3}
 --- !u!1001 &444810961
@@ -16311,11 +16306,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RunnerZombie
       objectReference: {fileID: 0}
-    - target: {fileID: 3049444504543014919, guid: d407bf2ab17206244a62568f800a1161,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3049444504543014920, guid: d407bf2ab17206244a62568f800a1161,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16324,7 +16314,7 @@ PrefabInstance:
     - target: {fileID: 3049444504543014920, guid: d407bf2ab17206244a62568f800a1161,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.106524e-17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3049444504543014920, guid: d407bf2ab17206244a62568f800a1161,
         type: 3}
@@ -16370,6 +16360,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1158007166640175125, guid: d407bf2ab17206244a62568f800a1161,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d407bf2ab17206244a62568f800a1161, type: 3}

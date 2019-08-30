@@ -26,6 +26,13 @@ public class RunnerController : MonoBehaviour
     protected ZombieAttack attack;
 
     protected bool isAttacking = false;
+    protected bool hasEmitted = true;
+
+    public Animator animator;
+
+    protected float animSpeed = 0;
+
+    public ParticleSystem particles;
 
     private void Start ()
     {
@@ -36,6 +43,17 @@ public class RunnerController : MonoBehaviour
 
     private void Update ()
     {
+        if (agent.isStopped)
+        {
+            animSpeed -= Time.deltaTime*5f;
+        }
+        else
+        {
+            animSpeed += Time.deltaTime*5f;
+        }
+        animSpeed = Mathf.Clamp01(animSpeed);
+        animator.SetFloat("speed", animSpeed);
+
         Vector3 playerPos = PlayerController.instance.transform.position;
         Vector2 playerPos2 = new Vector2(playerPos.x, playerPos.z);
         Vector2 pos2 = new Vector2(transform.position.x, transform.position.z);
@@ -48,6 +66,11 @@ public class RunnerController : MonoBehaviour
         if (isAttacking && Time.time > lastAttack + attackTime)
         {
             StopAttack();
+        }
+        if (isAttacking && hasEmitted == false && Time.time > lastAttack + attackTime - 0.2f)
+        {
+            particles.Play();
+            hasEmitted = true;
         }
         if (distance > 10)
         {
@@ -86,6 +109,7 @@ public class RunnerController : MonoBehaviour
     protected void StartAttack ()
     {
         isAttacking = true;
+        hasEmitted = false;
         lastAttack = Time.time;
         attack.Render(true);
 

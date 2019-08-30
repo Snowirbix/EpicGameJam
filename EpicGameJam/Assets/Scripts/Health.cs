@@ -4,7 +4,7 @@ public class Health : MonoBehaviour
 {
     public float maxHealth = 40;
 
-    [HideInInspector]
+    [ReadOnly]
     public float health;
 
 

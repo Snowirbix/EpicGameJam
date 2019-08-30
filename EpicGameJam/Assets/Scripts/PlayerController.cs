@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
     public float maxHealth = 100;
 
-    [HideInInspector]
+    [ReadOnly]
     public float health;
 
     public PostProcessVolume postProcess;
@@ -236,6 +236,6 @@ public class PlayerController : MonoBehaviour
 
     public void Die ()
     {
-        //
+        Debug.Log("You are dead");
     }
 }
