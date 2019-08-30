@@ -29,7 +29,7 @@ public class ZombieAttack : MonoBehaviour
         {
             Collider col = colliders[i];
 
-            if (col.tag == "Player")
+            if (col.tag == "Player" && !col.isTrigger)
             {
                 if (PlayerController.instance.ChangeHealth(-20))
                 {
@@ -45,7 +45,7 @@ public class ZombieAttack : MonoBehaviour
 
     private void OnTriggerEnter (Collider col)
     {
-        if (col.tag == "Player")
+        if (col.tag == "Player" && !col.isTrigger)
         {
             colliders.Add(col);
         }
@@ -53,7 +53,7 @@ public class ZombieAttack : MonoBehaviour
 
     private void OnTriggerExit (Collider col)
     {
-        if (col.tag == "Player")
+        if (col.tag == "Player" && !col.isTrigger)
         {
             colliders.Remove(col);
         }
