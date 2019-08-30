@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e15388594789f04448aa1470ee4693ce, type: 3}
-  m_Name: ThanksAl
+  m_Name: ThxIan
   m_EditorClassIdentifier: 
-  messageTitle: Alban
+  messageTitle: Mr Ian Ayers
   messageContent:
-  - text: Thanks you man
-    timer: 2
+  - text: Thanks, you're a real hero man eh.. i didn't want to assume your gender
+      of course
+    timer: 4

@@ -12,7 +12,6 @@ public class Delivery : MonoBehaviour
     public void Next ()
     {
         currentTarget++;
-        Debug.Log("current: " + currentTarget.ToString() + "length: " + targets.Length.ToString());
         if (currentTarget == targets.Length)
         {
             // Start new phase
