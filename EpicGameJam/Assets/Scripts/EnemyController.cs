@@ -28,6 +28,10 @@ public class EnemyController : MonoBehaviour
 
     protected float lastAttack;
 
+    public Animator animator;
+    
+    protected float animSpeed = 0;
+
     private void Start ()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -35,6 +39,17 @@ public class EnemyController : MonoBehaviour
 
     private void Update ()
     {
+        if (agent.isStopped)
+        {
+            animSpeed -= Time.deltaTime*5f;
+        }
+        else
+        {
+            animSpeed += Time.deltaTime*5f;
+        }
+        animSpeed = Mathf.Clamp01(animSpeed);
+        animator.SetFloat("speed", animSpeed);
+
         Vector3 playerPos = PlayerController.instance.transform.position;
         Vector2 playerPos2 = new Vector2(playerPos.x, playerPos.z);
         Vector2 pos2 = new Vector2(transform.position.x, transform.position.z);
