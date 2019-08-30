@@ -43,12 +43,23 @@ public class EnemyController : MonoBehaviour
         dir.Normalize();
         dir2.Normalize();
 
-        if (distance > range * 0.8f)
+        if (distance > range * 0.9f)
         {
             if (Vector3.Distance(playerPos, agent.destination) > sensitivity)
             {
                 agent.isStopped = false;
                 agent.SetDestination(playerPos);
+            }
+        }
+        if (distance < range * 0.5f)
+        {
+            Vector3 newPos = transform.position + (-dir * 3);
+            NavMeshHit hit;
+
+            if (NavMesh.SamplePosition(newPos, out hit, 3.5f, NavMesh.AllAreas))
+            {
+                Vector3 result = hit.position;
+                agent.SetDestination(result);
             }
         }
         else

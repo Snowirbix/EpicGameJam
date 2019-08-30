@@ -12365,12 +12365,17 @@ PrefabInstance:
     - target: {fileID: 3049444504543014921, guid: d407bf2ab17206244a62568f800a1161,
         type: 3}
       propertyPath: m_StoppingDistance
-      value: 3
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3049444504543014921, guid: d407bf2ab17206244a62568f800a1161,
+        type: 3}
+      propertyPath: m_Speed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4715261325471284777, guid: d407bf2ab17206244a62568f800a1161,
         type: 3}
       propertyPath: range
-      value: 3.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4715261325471284777, guid: d407bf2ab17206244a62568f800a1161,
         type: 3}
@@ -12380,7 +12385,7 @@ PrefabInstance:
     - target: {fileID: 4715261325471284777, guid: d407bf2ab17206244a62568f800a1161,
         type: 3}
       propertyPath: attackSpeed
-      value: 0.5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 680084667, guid: d407bf2ab17206244a62568f800a1161, type: 3}
       propertyPath: m_LocalScale.z
