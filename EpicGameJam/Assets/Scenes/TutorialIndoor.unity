@@ -1684,7 +1684,6 @@ GameObject:
   - component: {fileID: 385443948}
   - component: {fileID: 385443947}
   - component: {fileID: 385443946}
-  - component: {fileID: 385443945}
   m_Layer: 0
   m_Name: Pilar
   m_TagString: Untagged
@@ -1692,19 +1691,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &385443945
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 385443944}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &385443946
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2535,7 +2521,6 @@ GameObject:
   - component: {fileID: 1029253447}
   - component: {fileID: 1029253446}
   - component: {fileID: 1029253445}
-  - component: {fileID: 1029253444}
   m_Layer: 0
   m_Name: Pilar
   m_TagString: Untagged
@@ -2543,19 +2528,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &1029253444
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1029253443}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1029253445
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2720,7 +2692,6 @@ GameObject:
   - component: {fileID: 1076851344}
   - component: {fileID: 1076851343}
   - component: {fileID: 1076851342}
-  - component: {fileID: 1076851341}
   m_Layer: 0
   m_Name: Pilar
   m_TagString: Untagged
@@ -2728,19 +2699,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &1076851341
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1076851340}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1076851342
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2856,7 +2814,6 @@ GameObject:
   - component: {fileID: 1204651018}
   - component: {fileID: 1204651017}
   - component: {fileID: 1204651016}
-  - component: {fileID: 1204651015}
   m_Layer: 0
   m_Name: Pilar
   m_TagString: Untagged
@@ -2864,19 +2821,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &1204651015
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1204651014}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1204651016
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3845,7 +3789,6 @@ GameObject:
   - component: {fileID: 1493215850}
   - component: {fileID: 1493215849}
   - component: {fileID: 1493215848}
-  - component: {fileID: 1493215847}
   m_Layer: 0
   m_Name: Pilar
   m_TagString: Untagged
@@ -3853,19 +3796,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &1493215847
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1493215846}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1493215848
 MeshRenderer:
   m_ObjectHideFlags: 0

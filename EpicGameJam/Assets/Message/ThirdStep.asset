@@ -15,6 +15,6 @@ MonoBehaviour:
   messageTitle: Divine Voice
   messageContent:
   - text: Ahah, I got You :p
-    timer: 1.5
+    timer: 1
   - text: Now take this Backpack !
     timer: 0

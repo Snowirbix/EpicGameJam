@@ -15,6 +15,6 @@ MonoBehaviour:
   messageTitle: Divine Voice
   messageContent:
   - text: Perfect You're ready to Save the world now
-    timer: 1.5
+    timer: 2
   - text: Take this exit to join the real world
-    timer: 1
+    timer: 1.5
