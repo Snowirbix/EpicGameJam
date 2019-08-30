@@ -220,6 +220,10 @@ public class PlayerController : MonoBehaviour
     }
     public bool ChangeHealth (float value)
     {
+        if(value < 0)
+        {
+            animator.SetTrigger("Damaged");
+        }
         health += value;
         health = Mathf.Clamp(health, 0, maxHealth);
 
