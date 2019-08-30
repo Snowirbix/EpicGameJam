@@ -7,6 +7,7 @@ public class From2Dto3D : MonoBehaviour
     public CameraSettings camera3D;
     public GameObject cam;
 
+    public MessageObject city;
     public AnimationCurve ratioCurve;
 
     public float duration = 10f;
@@ -81,6 +82,7 @@ public class From2Dto3D : MonoBehaviour
                 transforming = false;
                 Application.targetFrameRate = 60;
                 fontChanger.FontChange();
+                MessageBox.instance.Display(new MessageBox.Message(city.messageTitle,city.messageContent));
             }
         }
     }
