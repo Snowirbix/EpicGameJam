@@ -15,5 +15,5 @@ MonoBehaviour:
   messageTitle: Ms Rosemary Miller
   messageContent:
   - text: Thanks, you're adorable, It would be unlucky if something bad happen to
-      you
+      you.
     timer: 5

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageTitle: Zach Hilton
   messageContent:
-  - text: Thanks for the delivery
+  - text: Thanks for the delivery.
     timer: 4

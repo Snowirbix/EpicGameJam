@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageTitle: Mr Franklin Logan
   messageContent:
-  - text: Thanks, another tips, use space bar to defend yourself :)
+  - text: Thanks, another tips, use SPACE bar to defend yourself :)
     timer: 4
