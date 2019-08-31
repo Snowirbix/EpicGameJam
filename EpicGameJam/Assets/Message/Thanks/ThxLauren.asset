@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e15388594789f04448aa1470ee4693ce, type: 3}
-  m_Name: ThxRosemary
+  m_Name: ThxLauren
   m_EditorClassIdentifier: 
-  messageTitle: Ms Rosemary Miller
+  messageTitle: MS Lauren Cain
   messageContent:
-  - text: Thanks, you're adorable, It would be unlucky if something bad happen to
-      you
-    timer: 5
+  - text: Thanks, hey you know that you can roll by using CTRL :)
+    timer: 4
