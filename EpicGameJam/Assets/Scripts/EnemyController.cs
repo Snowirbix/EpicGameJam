@@ -175,7 +175,7 @@ public class EnemyController : MonoBehaviour
         Quaternion quat = Quaternion.Euler(0, 0, angle);
         dir = quat * dir;
 
-        GameObject projectile = Instantiate(projectilePrefab, rayCaster.position, rayCaster.rotation);
+        GameObject projectile = Instantiate(projectilePrefab, rayCaster.position, Quaternion.AngleAxis(Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg, Vector3.up));
         projectile.GetComponent<Rigidbody>().AddForce(new Vector3(dir.x, 0, dir.y) * projectileSpeed, ForceMode.Impulse);
 
         animator.SetTrigger("attack");
