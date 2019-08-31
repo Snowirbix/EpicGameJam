@@ -89,7 +89,7 @@ public class Spawner : MonoBehaviour
 
         if (waves.Length > currentWave)
         {
-            foreach (Spawn spawn in waves[0].spawns)
+            foreach (Spawn spawn in waves[currentWave].spawns)
             {
                 for (int i = 0; i < spawn.Thrower; i++)
                 {
@@ -121,7 +121,7 @@ public class Spawner : MonoBehaviour
         if (transition)
         {
             float r = Mathf.Clamp01(Time.time - transitionTime);
-            sun.intensity = Mathf.Lerp(0.7f, 0.3f, r);
+            sun.intensity = Mathf.Lerp(0.7f, 0.15f, r);
 
             if (r == 1)
             {

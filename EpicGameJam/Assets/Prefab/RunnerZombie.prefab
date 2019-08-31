@@ -374,8 +374,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivity: 3
   range: 3
-  attackSpeed: 0.65
-  attackTime: 0.4
+  attackSpeed: 0.5
+  attackTime: 0.6
   prediction: 0.3
   randomness: 40
   attackObject: {fileID: 680084667}
@@ -5341,6 +5341,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: zombie_001
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 65b92b041476df348acca645d9a3f4da,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b7f460af491631a439ef70c50432e376, type: 2}
     - target: {fileID: -4216859302048453862, guid: 65b92b041476df348acca645d9a3f4da,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5396,11 +5401,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 65b92b041476df348acca645d9a3f4da,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: b7f460af491631a439ef70c50432e376, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65b92b041476df348acca645d9a3f4da, type: 3}
 --- !u!4 &8483315800568418994 stripped

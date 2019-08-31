@@ -107,8 +107,8 @@ public class EnemyController : MonoBehaviour
                         float predictionTime = prediction * (distance / range);
                         Vector3 predictedDir = ((playerPos + PlayerController.instance.prediction * predictionTime) - transform.position).normalized;
 
-                        if (Time.time > lastAttack + (1/attackSpeed))
-                            Shoot(new Vector2(predictedDir.x, predictedDir.z));
+                        //if (Time.time > lastAttack + (1/attackSpeed))
+                            //Shoot(new Vector2(predictedDir.x, predictedDir.z));
                     }
                 }
                 else

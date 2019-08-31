@@ -4974,8 +4974,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivity: 3
   range: 2.5
-  attackSpeed: 1
-  attackTime: 0.4
+  attackSpeed: 0.8
+  attackTime: 0.6
   jumpCd: 4
   jumpHeight:
     serializedVersion: 2
@@ -5001,11 +5001,11 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 0.00000081162915
+      outSlope: 0.00000081162915
       tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
+      weightedMode: 1
+      inWeight: 0.52710843
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

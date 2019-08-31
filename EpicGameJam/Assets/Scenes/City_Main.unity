@@ -11386,22 +11386,40 @@ MonoBehaviour:
   - spawns:
     - spawnPoint: {fileID: 762836417}
       Thrower: 1
+      Runner: 0
+      Jumper: 0
+      Exploder: 0
+  - spawns:
+    - spawnPoint: {fileID: 762836417}
+      Thrower: 0
       Runner: 1
+      Jumper: 0
+      Exploder: 0
+  - spawns:
+    - spawnPoint: {fileID: 332051928}
+      Thrower: 0
+      Runner: 0
+      Jumper: 1
+      Exploder: 1
+  - spawns:
+    - spawnPoint: {fileID: 762836417}
+      Thrower: 2
+      Runner: 0
       Jumper: 0
       Exploder: 0
     - spawnPoint: {fileID: 332051928}
       Thrower: 0
       Runner: 0
-      Jumper: 1
+      Jumper: 2
       Exploder: 0
     - spawnPoint: {fileID: 2031592889}
       Thrower: 0
       Runner: 0
-      Jumper: 1
+      Jumper: 0
       Exploder: 1
     - spawnPoint: {fileID: 769524893}
-      Thrower: 1
-      Runner: 1
+      Thrower: 0
+      Runner: 2
       Jumper: 0
       Exploder: 0
   - spawns:
@@ -11411,10 +11429,10 @@ MonoBehaviour:
       Jumper: 1
       Exploder: 0
     - spawnPoint: {fileID: 332051928}
-      Thrower: 0
+      Thrower: 1
       Runner: 1
       Jumper: 1
-      Exploder: 1
+      Exploder: 0
     - spawnPoint: {fileID: 2031592889}
       Thrower: 1
       Runner: 1
@@ -11423,8 +11441,8 @@ MonoBehaviour:
     - spawnPoint: {fileID: 769524893}
       Thrower: 1
       Runner: 1
-      Jumper: 0
-      Exploder: 1
+      Jumper: 1
+      Exploder: 0
   - spawns:
     - spawnPoint: {fileID: 762836417}
       Thrower: 1
@@ -25078,7 +25096,7 @@ Light:
   serializedVersion: 9
   m_Type: 1
   m_Color: {r: 1, g: 0.9642889, b: 0.8632076, a: 1}
-  m_Intensity: 0.1
+  m_Intensity: 0.7
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
