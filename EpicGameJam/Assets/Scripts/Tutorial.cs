@@ -129,7 +129,7 @@ public class Tutorial : MonoBehaviour
             yield return null;
         }
 
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("City");
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("City_Main");
 
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
