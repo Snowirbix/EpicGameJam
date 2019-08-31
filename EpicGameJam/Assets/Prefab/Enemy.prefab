@@ -77,7 +77,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 6
+  m_Speed: 4
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 360000
@@ -109,13 +109,13 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
-  range: 17
+  range: 20
   projectilePrefab: {fileID: 9142142856197684259, guid: bc4cd896c4637f64e8c4375a4c45929f,
     type: 3}
   projectileSpeed: 15
-  attackSpeed: 0.6
-  prediction: 0.7
-  randomness: 12
+  attackSpeed: 0.5
+  prediction: 0.6
+  randomness: 20
   animator: {fileID: 6625451434526978017}
 --- !u!136 &2703529626612426241
 CapsuleCollider:
@@ -173,6 +173,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5452865240144708763}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 65b92b041476df348acca645d9a3f4da,
+        type: 3}
+      propertyPath: m_Name
+      value: zombie_001
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 65b92b041476df348acca645d9a3f4da,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b7f460af491631a439ef70c50432e376, type: 2}
     - target: {fileID: -4216859302048453862, guid: 65b92b041476df348acca645d9a3f4da,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -227,16 +237,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 65b92b041476df348acca645d9a3f4da,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: b7f460af491631a439ef70c50432e376, type: 2}
-    - target: {fileID: -927199367670048503, guid: 65b92b041476df348acca645d9a3f4da,
-        type: 3}
-      propertyPath: m_Name
-      value: zombie_001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65b92b041476df348acca645d9a3f4da, type: 3}
