@@ -16,6 +16,6 @@ MonoBehaviour:
   messageContent:
   - text: Why are you doing a weird face, have you never been outside before, nerd?
     timer: 4
-  - text: Well your mission now is to deliver some kind package to people of this
-      town
+  - text: Well your mission now is to deliver some care package to people of this
+      town.
     timer: 4

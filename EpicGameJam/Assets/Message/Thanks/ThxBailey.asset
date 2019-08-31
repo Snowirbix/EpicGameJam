@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageTitle: Ms Bailey Benton
   messageContent:
-  - text: Oh thank you mister
+  - text: Oh thank you mister.
     timer: 4

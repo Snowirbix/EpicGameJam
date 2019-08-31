@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageTitle: Mr Raphael Dean
   messageContent:
-  - text: Thanks, I was waiting that for so long
+  - text: Thanks, I was waiting that for so long.
     timer: 4

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageTitle: Divine Voice
   messageContent:
-  - text: Ok nice, You can also interact with "E"
+  - text: Ok nice, You can also interact with "E".
     timer: 2
-  - text: Try to interact with that object right here
+  - text: Try to interact with that object right here.
     timer: 0
