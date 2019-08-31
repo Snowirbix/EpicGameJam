@@ -29,7 +29,7 @@ public class PlayerAttack : MonoBehaviour
             Collider col = colliders[i];
 
             hit.Add(col);
-            if (col.GetComponent<Health>().ChangeHealth(-15))
+            if (col.GetComponent<Health>().ChangeHealth(-20))
             {
                 colliders.RemoveAt(i);
             }
@@ -50,7 +50,7 @@ public class PlayerAttack : MonoBehaviour
             if (isAttacking && !hit.Contains(col))
             {
                 hit.Add(col);
-                if (col.GetComponent<Health>().ChangeHealth(-15))
+                if (col.GetComponent<Health>().ChangeHealth(-20))
                 {
                     // don't add
                 }
