@@ -16,4 +16,4 @@ MonoBehaviour:
   messageContent:
   - text: Thanks, you're adorable, It would be unlucky if something bad happen to
       you
-    timer: 4
+    timer: 5

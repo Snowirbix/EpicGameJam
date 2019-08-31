@@ -35,7 +35,8 @@ public class DeliveryInteractable : InteractableScript
     public override void Interact()
     {
         MessageBox.instance.Display(new MessageBox.Message(messageObject.messageTitle,messageObject.messageContent));
-        delivery.Next();
         PlayerController.instance.HideBox();
+        delivery.Next();
+        
     }
 }

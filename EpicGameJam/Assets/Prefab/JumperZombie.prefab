@@ -4948,7 +4948,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 6
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 360000
@@ -4974,9 +4974,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivity: 3
   range: 2.5
-  attackSpeed: 0.3
+  attackSpeed: 1
   attackTime: 0.4
-  jumpCd: 3
+  jumpCd: 4
   jumpHeight:
     serializedVersion: 2
     m_Curve:
@@ -5031,10 +5031,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.8
+  m_Height: 1.5
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1, z: 0.3}
 --- !u!54 &3682082355414128386
 Rigidbody:
   m_ObjectHideFlags: 0

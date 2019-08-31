@@ -3,7 +3,17 @@ guid: 909c3e68718e4604bb3965c20ec00d3d
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Road_Brick_Light
+    second: {fileID: 2100000, guid: 4f93be1fdfb887448b3dfc303c7a735b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Road_Kerb_Light
+    second: {fileID: 2100000, guid: 15d5a01eb4cba7c4fb34a45b2b8cbd07, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

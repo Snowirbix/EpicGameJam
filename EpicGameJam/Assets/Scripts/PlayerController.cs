@@ -20,8 +20,8 @@ public class PlayerController : MonoBehaviour
     [ReadOnly]
     public Vector2 axes;
 
-    [Range(2, 10)]
-    public float speed = 7f;
+    [Range(2, 25)]
+    public float speed = 9f;
 
     public Transform rotator;
 
@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour
 
     [ReadOnly]
     public float health;
+
+    protected bool isDead = false;
 
     public PostProcessVolume postProcess;
 
@@ -95,6 +97,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update ()
     {
+        if (isDead)
+            return;
         if(!Pause.gameIsPaused)
         {
             if (isRolling)
@@ -166,6 +170,8 @@ public class PlayerController : MonoBehaviour
 
     protected void Attack ()
     {
+        if (isDead)
+            return;
         if (Time.time <= lastAttack + (1/attackSpeed))
             return;
         
@@ -185,6 +191,8 @@ public class PlayerController : MonoBehaviour
 
     protected void Roll ()
     {
+        if (isDead)
+            return;
         if (Time.time > lastRollin + rollingCd)
         {
             animator.SetTrigger("Roll");
@@ -195,6 +203,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
+        if (isDead)
+            return;
         if(other.tag == "interactable")
         {
             canInteract = true;
@@ -218,8 +228,11 @@ public class PlayerController : MonoBehaviour
         interactableScript = null;
         informationBox.Hide();
     }
+
     public bool ChangeHealth (float value)
     {
+        if (isDead)
+            return false;
         if(value < 0)
         {
             animator.SetTrigger("Damaged");
@@ -242,6 +255,7 @@ public class PlayerController : MonoBehaviour
     public void Die ()
     {
         DeathScreen.SetActive(true);
+        isDead = true;
         animator.SetTrigger("Death");
     }
 }
