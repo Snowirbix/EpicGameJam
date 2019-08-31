@@ -118,4 +118,12 @@ public class Spawner : MonoBehaviour
         Debug.Log("NEXT WAVE");
         NextWave();
     }
+
+    public void DeleteZombies()
+    {
+        foreach(GameObject zombie in zombies)
+        {
+            Destroy(zombie);
+        }
+    }
 }
