@@ -262,6 +262,6 @@ public class PlayerController : MonoBehaviour
     public void Respawn()
     {
         isDead = false;
-        health = maxHealth;
+        ChangeHealth(maxHealth);
     }
 }
