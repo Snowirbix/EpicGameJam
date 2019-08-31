@@ -17,7 +17,7 @@ public class Delivery : MonoBehaviour
             // Start new phase
             enabled = false;
             arrowDirection.SetActive(false);
-            Spawner.instance.FirstWave();
+            Spawner.instance.StartWaves();
         }
     }
 

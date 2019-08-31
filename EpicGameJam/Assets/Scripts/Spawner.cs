@@ -41,6 +41,17 @@ public class Spawner : MonoBehaviour
         instance = this;
     }
 
+    public Light sun;
+    protected float transitionTime;
+    protected bool transition = false;
+    protected bool started = false;
+
+    public void StartWaves ()
+    {
+        transitionTime = Time.time;
+        transition = true;
+    }
+
     public void FirstWave ()
     {
         if (waves.Length > 0)
@@ -106,6 +117,18 @@ public class Spawner : MonoBehaviour
 
     private void Update ()
     {
+        if (transition)
+        {
+            float r = Mathf.Clamp01(Time.time - transitionTime);
+            sun.intensity = 1-r;
+
+            if (r == 1)
+            {
+                transition = false;
+                started = true;
+                FirstWave();
+            }
+        }
         if (zombies.Count == 0)
             return;
 
