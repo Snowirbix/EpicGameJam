@@ -16,6 +16,8 @@ public class Delivery : MonoBehaviour
         {
             // Start new phase
             enabled = false;
+            arrowDirection.SetActive(false);
+            Spawner.instance.FirstWave();
         }
     }
 
@@ -31,6 +33,5 @@ public class Delivery : MonoBehaviour
         {
             arrowDirection.SetActive(false);
         }
-
     }
 }
