@@ -54,9 +54,10 @@ public class Spawner : MonoBehaviour
 
     public void FirstWave ()
     {
+        currentWave = 0;
         if (waves.Length > 0)
         {
-            foreach (Spawn spawn in waves[0].spawns)
+            foreach (Spawn spawn in waves[currentWave].spawns)
             {
                 for (int i = 0; i < spawn.Thrower; i++)
                 {
