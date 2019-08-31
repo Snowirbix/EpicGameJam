@@ -4948,7 +4948,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 6
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 360000
@@ -4974,7 +4974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivity: 3
   range: 2.5
-  attackSpeed: 0.3
+  attackSpeed: 0.8
   attackTime: 0.4
   jumpCd: 3
   jumpHeight:
