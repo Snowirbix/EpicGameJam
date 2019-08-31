@@ -125,7 +125,6 @@ public class JumperController : MonoBehaviour
             }
             else
             {
-                Debug.Log(sphereHitInfo.transform.name);
                 if (Vector3.Distance(playerPos, agent.destination) > sensitivity)
                 {
                     agent.isStopped = false;

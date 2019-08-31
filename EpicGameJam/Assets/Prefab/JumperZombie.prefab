@@ -4974,7 +4974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivity: 3
   range: 2.5
-  attackSpeed: 0.8
+  attackSpeed: 1
   attackTime: 0.4
   jumpCd: 4
   jumpHeight:
@@ -5031,10 +5031,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.8
+  m_Height: 1.5
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1, z: 0.3}
 --- !u!54 &3682082355414128386
 Rigidbody:
   m_ObjectHideFlags: 0
