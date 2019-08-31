@@ -41,8 +41,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 9
   m_Type: 2
-  m_Color: {r: 0.9449551, g: 1, b: 0.3443396, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 1, g: 0.9193037, b: 0.34509802, a: 1}
+  m_Intensity: 1.4
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -103,6 +103,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: lightpole
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 4ba940300491ec049815f5a118f5fd85,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b7e83dfa0f3c464c809dc3a0ae095ed, type: 2}
+    - target: {fileID: -1504981713932161579, guid: 4ba940300491ec049815f5a118f5fd85,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ffe43f9f821b95b469fa85e63e7fa5e6, type: 2}
     - target: {fileID: -4216859302048453862, guid: 4ba940300491ec049815f5a118f5fd85,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -158,16 +168,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -1504981713932161579, guid: 4ba940300491ec049815f5a118f5fd85,
-        type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 6b7e83dfa0f3c464c809dc3a0ae095ed, type: 2}
-    - target: {fileID: -1504981713932161579, guid: 4ba940300491ec049815f5a118f5fd85,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: ffe43f9f821b95b469fa85e63e7fa5e6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ba940300491ec049815f5a118f5fd85, type: 3}
 --- !u!4 &9018688353602865265 stripped
