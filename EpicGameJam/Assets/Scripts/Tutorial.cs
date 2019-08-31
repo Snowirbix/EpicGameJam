@@ -56,24 +56,24 @@ public class Tutorial : MonoBehaviour
 
         if(firstStep)
         {   
-            switch(PlayerController.instance.axes.x)
+            if(PlayerController.instance.axes.x > 0.5f)
             {
-                case 1:
                 right = true;
-                break;
-                case -1:
-                left = true;
-                break;
             }
 
-            switch(PlayerController.instance.axes.y)
+            if(PlayerController.instance.axes.x < -0.5f)
             {
-                case 1:
+                left = true;
+            }
+
+            if(PlayerController.instance.axes.y > 0.5f)
+            {
                 up = true;
-                break;
-                case -1:
+            }
+
+            if(PlayerController.instance.axes.y < -0.5f)
+            {
                 down = true;
-                break;
             }
 
             if(right && left && up && down)

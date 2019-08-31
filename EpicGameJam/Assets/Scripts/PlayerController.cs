@@ -258,4 +258,10 @@ public class PlayerController : MonoBehaviour
         isDead = true;
         animator.SetTrigger("Death");
     }
+
+    public void Respawn()
+    {
+        isDead = false;
+        health = maxHealth;
+    }
 }

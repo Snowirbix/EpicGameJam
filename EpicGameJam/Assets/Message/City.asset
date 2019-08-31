@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messageTitle: Divine Voice
   messageContent:
-  - text: Why are you doing a weird face, have you never been outside before, fucking
-      nerd?
-    timer: 3
-  - text: Well your true mission is to deliver some kind package to people of this
+  - text: Why are you doing a weird face, have you never been outside before, nerd?
+    timer: 4
+  - text: Well your mission now is to deliver some kind package to people of this
       town
-    timer: 3
+    timer: 4
