@@ -111,6 +111,7 @@ public class Spawner : MonoBehaviour
         }
         else
         {
+            EndOfTheGame();
             enabled = false;
         }
     }
@@ -137,8 +138,6 @@ public class Spawner : MonoBehaviour
             if (zombie != null)
                 return;
         }
-
-        Debug.Log("NEXT WAVE");
         NextWave();
     }
 
@@ -148,5 +147,10 @@ public class Spawner : MonoBehaviour
         {
             Destroy(zombie);
         }
+    }
+
+    void EndOfTheGame()
+    {
+        MessageBox.instance.Display(new MessageBox.Message("Divine Voice",new []{new MessageBox.Sentence("Congrats, you save the city... but you also killed everyone :D")}));
     }
 }
