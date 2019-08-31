@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e15388594789f04448aa1470ee4693ce, type: 3}
-  m_Name: ThxRosemary
+  m_Name: ThxFranklin
   m_EditorClassIdentifier: 
-  messageTitle: Ms Rosemary Miller
+  messageTitle: Mr Franklin Logan
   messageContent:
-  - text: Thanks, you're adorable, It would be unlucky if something bad happen to
-      you
-    timer: 5
+  - text: Thanks, another tips, use space bar to defend yourself :)
+    timer: 4
