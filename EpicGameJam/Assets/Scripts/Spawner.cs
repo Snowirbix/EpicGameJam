@@ -120,7 +120,7 @@ public class Spawner : MonoBehaviour
         if (transition)
         {
             float r = Mathf.Clamp01(Time.time - transitionTime);
-            sun.intensity = 1-r;
+            sun.intensity = Mathf.Lerp(0.7f, 0.3f, r);
 
             if (r == 1)
             {

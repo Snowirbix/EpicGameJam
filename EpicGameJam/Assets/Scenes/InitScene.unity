@@ -627,7 +627,7 @@ MonoBehaviour:
   animator: {fileID: 3166231814273749524}
   sword: {fileID: 1826240921}
   axes: {x: 0, y: 0}
-  speed: 20
+  speed: 9
   rotator: {fileID: 5006512736528990062}
   pauseMenu: {fileID: 2096204222}
   backpack: {fileID: 8296172668966162382}
