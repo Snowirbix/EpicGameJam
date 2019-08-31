@@ -15,7 +15,7 @@ public class NpcWalkingDead : MonoBehaviour
     {
         if(delivery.currentTarget == delivery.targets.Length)
         {
-            enabled = false;
+            gameObject.SetActive(false);
         }
     }
 }
