@@ -1,14 +1,15 @@
 // GENERATED AUTOMATICALLY FROM 'Assets/InputManager/PlayerControls.inputactions'
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class PlayerControls : IInputActionCollection
+public class @PlayerControls : IInputActionCollection, IDisposable
 {
-    private InputActionAsset asset;
-    public PlayerControls()
+    public InputActionAsset asset { get; }
+    public @PlayerControls()
     {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""PlayerControls"",
@@ -252,15 +253,15 @@ public class PlayerControls : IInputActionCollection
     ""controlSchemes"": []
 }");
         // Gameplay
-        m_Gameplay = asset.GetActionMap("Gameplay");
-        m_Gameplay_Move = m_Gameplay.GetAction("Move");
-        m_Gameplay_Interact = m_Gameplay.GetAction("Interact");
-        m_Gameplay_Pause = m_Gameplay.GetAction("Pause");
-        m_Gameplay_Attack = m_Gameplay.GetAction("Attack");
-        m_Gameplay_Roll = m_Gameplay.GetAction("Roll");
+        m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
+        m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
+        m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
+        m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
+        m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
+        m_Gameplay_Roll = m_Gameplay.FindAction("Roll", throwIfNotFound: true);
     }
 
-    ~PlayerControls()
+    public void Dispose()
     {
         UnityEngine.Object.Destroy(asset);
     }
@@ -314,8 +315,8 @@ public class PlayerControls : IInputActionCollection
     private readonly InputAction m_Gameplay_Roll;
     public struct GameplayActions
     {
-        private PlayerControls m_Wrapper;
-        public GameplayActions(PlayerControls wrapper) { m_Wrapper = wrapper; }
+        private @PlayerControls m_Wrapper;
+        public GameplayActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
@@ -330,40 +331,40 @@ public class PlayerControls : IInputActionCollection
         {
             if (m_Wrapper.m_GameplayActionsCallbackInterface != null)
             {
-                Move.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
-                Move.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
-                Move.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
-                Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
-                Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
-                Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
-                Pause.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
-                Pause.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
-                Pause.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
-                Attack.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
-                Attack.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
-                Attack.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
-                Roll.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRoll;
-                Roll.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRoll;
-                Roll.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRoll;
+                @Move.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
+                @Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Pause.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
+                @Attack.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
+                @Attack.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
+                @Attack.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
+                @Roll.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRoll;
+                @Roll.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRoll;
+                @Roll.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRoll;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
             {
-                Move.started += instance.OnMove;
-                Move.performed += instance.OnMove;
-                Move.canceled += instance.OnMove;
-                Interact.started += instance.OnInteract;
-                Interact.performed += instance.OnInteract;
-                Interact.canceled += instance.OnInteract;
-                Pause.started += instance.OnPause;
-                Pause.performed += instance.OnPause;
-                Pause.canceled += instance.OnPause;
-                Attack.started += instance.OnAttack;
-                Attack.performed += instance.OnAttack;
-                Attack.canceled += instance.OnAttack;
-                Roll.started += instance.OnRoll;
-                Roll.performed += instance.OnRoll;
-                Roll.canceled += instance.OnRoll;
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+                @Attack.started += instance.OnAttack;
+                @Attack.performed += instance.OnAttack;
+                @Attack.canceled += instance.OnAttack;
+                @Roll.started += instance.OnRoll;
+                @Roll.performed += instance.OnRoll;
+                @Roll.canceled += instance.OnRoll;
             }
         }
     }

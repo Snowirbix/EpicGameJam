@@ -39,8 +39,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5761292724933313250}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 2
+  m_Shape: 0
   m_Color: {r: 1, g: 0.8361413, b: 0.33490568, a: 1}
   m_Intensity: 1
   m_Range: 3
@@ -48,7 +49,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -81,10 +82,10 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 0
+  m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -98,16 +99,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: dbfadf33b4acf1249865e73840278f90,
-        type: 3}
-      propertyPath: m_Name
-      value: paperlantern Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: -1504981713932161579, guid: dbfadf33b4acf1249865e73840278f90,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: ddb2f86e34469fb4c8ff816e2580e3d6, type: 2}
     - target: {fileID: -4216859302048453862, guid: dbfadf33b4acf1249865e73840278f90,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -162,6 +153,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: dbfadf33b4acf1249865e73840278f90,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ddb2f86e34469fb4c8ff816e2580e3d6, type: 2}
+    - target: {fileID: -927199367670048503, guid: dbfadf33b4acf1249865e73840278f90,
+        type: 3}
+      propertyPath: m_Name
+      value: paperlantern Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: dbfadf33b4acf1249865e73840278f90,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbfadf33b4acf1249865e73840278f90, type: 3}
