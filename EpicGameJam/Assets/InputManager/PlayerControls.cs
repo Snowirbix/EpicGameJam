@@ -205,7 +205,7 @@ public class PlayerControls : IInputActionCollection
                 {
                     ""name"": """",
                     ""id"": ""3b18d0fe-1abd-45e4-b718-c1c1c21e0fc7"",
-                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -216,7 +216,7 @@ public class PlayerControls : IInputActionCollection
                 {
                     ""name"": """",
                     ""id"": ""6a1db955-d651-43cd-8cdc-0232e6ea8b3b"",
-                    ""path"": ""<Keyboard>/rightCtrl"",
+                    ""path"": ""<Keyboard>/rightShift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
