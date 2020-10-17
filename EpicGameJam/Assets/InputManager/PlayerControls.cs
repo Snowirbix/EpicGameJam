@@ -22,7 +22,7 @@ public class PlayerControls : IInputActionCollection
                     ""type"": ""Value"",
                     ""id"": ""88043e87-9109-4555-98fc-4133775a9a37"",
                     ""expectedControlType"": """",
-                    ""processors"": """",
+                    ""processors"": ""NormalizeVector2"",
                     ""interactions"": """"
                 },
                 {
@@ -267,6 +267,30 @@ public class PlayerControls : IInputActionCollection
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""CaptureMouse"",
+                    ""type"": ""Button"",
+                    ""id"": ""cf553d37-c246-4333-9235-9f249af2ea96"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ReleaseMouse"",
+                    ""type"": ""Button"",
+                    ""id"": ""dd85ab65-dc3d-4a3d-8d93-5a54adff829e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""44c6ab7b-ed2b-4a9e-95c2-b57b4f9b823c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -412,6 +436,39 @@ public class PlayerControls : IInputActionCollection
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3bd14627-2687-4619-a324-8d2a7559d5e4"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";PC"",
+                    ""action"": ""CaptureMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f8b79f76-840c-4691-b1ad-238ea18e78c2"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";PC"",
+                    ""action"": ""ReleaseMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7c9749f5-c0fe-4af0-921f-b57b5e18d607"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";PC"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -459,6 +516,9 @@ public class PlayerControls : IInputActionCollection
         m_Grounded = asset.GetActionMap("Grounded");
         m_Grounded_Move = m_Grounded.GetAction("Move");
         m_Grounded_Look = m_Grounded.GetAction("Look");
+        m_Grounded_CaptureMouse = m_Grounded.GetAction("CaptureMouse");
+        m_Grounded_ReleaseMouse = m_Grounded.GetAction("ReleaseMouse");
+        m_Grounded_Interact = m_Grounded.GetAction("Interact");
     }
 
     ~PlayerControls()
@@ -575,12 +635,18 @@ public class PlayerControls : IInputActionCollection
     private IGroundedActions m_GroundedActionsCallbackInterface;
     private readonly InputAction m_Grounded_Move;
     private readonly InputAction m_Grounded_Look;
+    private readonly InputAction m_Grounded_CaptureMouse;
+    private readonly InputAction m_Grounded_ReleaseMouse;
+    private readonly InputAction m_Grounded_Interact;
     public struct GroundedActions
     {
         private PlayerControls m_Wrapper;
         public GroundedActions(PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Grounded_Move;
         public InputAction @Look => m_Wrapper.m_Grounded_Look;
+        public InputAction @CaptureMouse => m_Wrapper.m_Grounded_CaptureMouse;
+        public InputAction @ReleaseMouse => m_Wrapper.m_Grounded_ReleaseMouse;
+        public InputAction @Interact => m_Wrapper.m_Grounded_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Grounded; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -596,6 +662,15 @@ public class PlayerControls : IInputActionCollection
                 Look.started -= m_Wrapper.m_GroundedActionsCallbackInterface.OnLook;
                 Look.performed -= m_Wrapper.m_GroundedActionsCallbackInterface.OnLook;
                 Look.canceled -= m_Wrapper.m_GroundedActionsCallbackInterface.OnLook;
+                CaptureMouse.started -= m_Wrapper.m_GroundedActionsCallbackInterface.OnCaptureMouse;
+                CaptureMouse.performed -= m_Wrapper.m_GroundedActionsCallbackInterface.OnCaptureMouse;
+                CaptureMouse.canceled -= m_Wrapper.m_GroundedActionsCallbackInterface.OnCaptureMouse;
+                ReleaseMouse.started -= m_Wrapper.m_GroundedActionsCallbackInterface.OnReleaseMouse;
+                ReleaseMouse.performed -= m_Wrapper.m_GroundedActionsCallbackInterface.OnReleaseMouse;
+                ReleaseMouse.canceled -= m_Wrapper.m_GroundedActionsCallbackInterface.OnReleaseMouse;
+                Interact.started -= m_Wrapper.m_GroundedActionsCallbackInterface.OnInteract;
+                Interact.performed -= m_Wrapper.m_GroundedActionsCallbackInterface.OnInteract;
+                Interact.canceled -= m_Wrapper.m_GroundedActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_GroundedActionsCallbackInterface = instance;
             if (instance != null)
@@ -606,6 +681,15 @@ public class PlayerControls : IInputActionCollection
                 Look.started += instance.OnLook;
                 Look.performed += instance.OnLook;
                 Look.canceled += instance.OnLook;
+                CaptureMouse.started += instance.OnCaptureMouse;
+                CaptureMouse.performed += instance.OnCaptureMouse;
+                CaptureMouse.canceled += instance.OnCaptureMouse;
+                ReleaseMouse.started += instance.OnReleaseMouse;
+                ReleaseMouse.performed += instance.OnReleaseMouse;
+                ReleaseMouse.canceled += instance.OnReleaseMouse;
+                Interact.started += instance.OnInteract;
+                Interact.performed += instance.OnInteract;
+                Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -640,5 +724,8 @@ public class PlayerControls : IInputActionCollection
     {
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+        void OnCaptureMouse(InputAction.CallbackContext context);
+        void OnReleaseMouse(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

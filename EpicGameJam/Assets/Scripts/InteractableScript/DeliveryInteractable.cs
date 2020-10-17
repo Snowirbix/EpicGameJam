@@ -5,13 +5,12 @@ using UnityEngine;
 public class DeliveryInteractable : InteractableScript
 {
     protected Delivery delivery;
-    // Start is called before the first frame update
+
     void Start()
     {
-        delivery = PlayerController.instance.GetComponent<Delivery>();
+        delivery = FirstPersonController.instance.Q<Delivery>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(delivery.currentTarget == delivery.targets.Length)
@@ -34,9 +33,8 @@ public class DeliveryInteractable : InteractableScript
 
     public override void Interact()
     {
-        MessageBox.instance.Display(new MessageBox.Message(messageObject.messageTitle,messageObject.messageContent));
-        PlayerController.instance.HideBox();
+        MessageBox.instance.Display(new MessageBox.Message(messageObject.messageTitle, messageObject.messageContent));
+        FirstPersonController.instance.HideBox();
         delivery.Next();
-        
     }
 }

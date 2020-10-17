@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Linq;
 
 public class MessageBox : MonoBehaviour
 {
@@ -145,12 +146,7 @@ public class MessageBox : MonoBehaviour
 
         while (letters.Count > 0)
         {
-            // add more letters if framerate is lower
-            for (int i = 0; i < (int)(60 / Application.targetFrameRate); i++)
-            {
-                if (letters.Count > 0)
-                    body.text += letters.Dequeue();
-            }
+            body.text += letters.Dequeue();
             yield return null;
         }
     }

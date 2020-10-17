@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public static class ExtensionMethods
 {
     /**
      * <summary>Create vec2(x, z)</summary>
      */
-    public static Vector2 XZ(this Vector3 vec)
+    public static Vector2 xz(this Vector3 vec)
     {
         return new Vector2(vec.x, vec.z);
     }
@@ -15,19 +16,35 @@ public static class ExtensionMethods
     /**
      * <summary>Create vec3(x, 0, y)</summary>
      */
-    public static Vector3 Dir3(this Vector2 vec)
+    public static Vector3 x0y(this Vector2 vec)
     {
         return new Vector3(vec.x, 0, vec.y);
     }
-
+    
     /**
-     * Query the component
+     * <summary>Query the component</summary>
      */
     public static T Q<T>(this GameObject obj)
     {
         return obj.GetComponent<T>();
     }
-
+    
+    /**
+     * <summary>Query the component</summary>
+     */
+    public static T Q<T>(this Behaviour obj)
+    {
+        return obj.GetComponent<T>();
+    }
+    
+    /**
+     * <summary>Query the component</summary>
+     */
+    public static T Q<T>(this Transform obj)
+    {
+        return obj.GetComponent<T>();
+    }
+    
     public static Vector3 position(this GameObject obj)
     {
         return obj.transform.position;
@@ -48,5 +65,27 @@ public static class ExtensionMethods
     {
         rb.isKinematic = isKinematic;
         return rb;
+    }
+    
+    public static Quaternion DirectionToRotation (this Vector2 vec, Axis axis = Axis.Y)
+    {
+        Vector3 axe;
+        switch(axis)
+        {
+            case Axis.X:
+                axe = Vector3.right;
+            break;
+            case Axis.Y:
+            default:
+                axe = Vector3.up;
+            break;
+            case Axis.Z:
+                axe = Vector3.forward;
+            break;
+        }
+
+        float angle = Mathf.Atan2(vec.y, vec.x);
+        angle = angle * 180 / Mathf.PI;
+        return Quaternion.AngleAxis(angle, axe);
     }
 }

@@ -52,10 +52,10 @@ public class InputController : MonoBehaviour
     private void Update ()
     {
         Vector2 input = ctrls.Grounded.Move.ReadValue<Vector2>();
-        Vector3 direction = input.Dir3();
+        Vector3 direction = input.x0y();
         direction = transform.localRotation * direction;
         direction.Normalize();
 
-        moveCtrl.Move(direction.XZ());
+        moveCtrl.Move(direction.xz());
     }
 }

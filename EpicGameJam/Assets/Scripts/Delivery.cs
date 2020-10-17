@@ -27,7 +27,15 @@ public class Delivery : MonoBehaviour
         {
             arrowDirection.SetActive(true);
             Vector3 direction = targets[currentTarget].position - transform.position;
-            arrowDirection.transform.localRotation = Quaternion.AngleAxis(Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg, Vector3.up); 
+            if (direction.magnitude > 10f)
+            {
+                arrowDirection.SetActive(true);
+                arrowDirection.transform.localRotation = Quaternion.AngleAxis(Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg, Vector3.up); 
+            }
+            else
+            {
+                arrowDirection.SetActive(false);
+            }
         }
         else
         {

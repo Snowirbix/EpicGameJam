@@ -8,10 +8,10 @@ public class InformationBox : MonoBehaviour
     public static InformationBox instance;
     public GameObject box;
     public TextMeshProUGUI informationText;
-    // Start is called before the first frame update
 
     protected Information information;
-     public class Information
+
+    public class Information
     {
         public string title;
         public Queue<string> sentences;
@@ -22,11 +22,13 @@ public class InformationBox : MonoBehaviour
             this.sentences = new Queue<string>(sentences);
         }
     }
+
     private void Awake ()
     {
         instance = this;
     }
-    void Start()
+
+    private void Start()
     {
         if (information == null)
         {
@@ -34,8 +36,7 @@ public class InformationBox : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (information != null)
         {
@@ -54,6 +55,7 @@ public class InformationBox : MonoBehaviour
         box.SetActive(true);
         return this;
     }
+
     protected void DisplaySentence ()
     {
         //StopAllCoroutines();
@@ -73,12 +75,7 @@ public class InformationBox : MonoBehaviour
 
         while (letters.Count > 1)
         {
-            // add more letters if framerate is lower
-            for (int i = 0; i < (int)(60 / Application.targetFrameRate); i++)
-            {
-                if (letters.Count > 0)
-                    informationText.text += letters.Dequeue();
-            }
+            informationText.text += letters.Dequeue();
             yield return null;
         }
     }

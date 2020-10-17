@@ -5,12 +5,13 @@ using UnityEngine;
 public class NpcWalkingDead : MonoBehaviour
 {
     protected Delivery delivery;
+
     void Start()
     {
-        delivery = PlayerController.instance.GetComponent<Delivery>();
+        delivery = FirstPersonController.instance.Q<Delivery>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if(delivery.currentTarget == delivery.targets.Length)
