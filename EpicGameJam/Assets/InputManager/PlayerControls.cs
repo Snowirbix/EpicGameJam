@@ -1,14 +1,15 @@
 // GENERATED AUTOMATICALLY FROM 'Assets/InputManager/PlayerControls.inputactions'
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class PlayerControls : IInputActionCollection
+public class @PlayerControls : IInputActionCollection, IDisposable
 {
-    private InputActionAsset asset;
-    public PlayerControls()
+    public InputActionAsset asset { get; }
+    public @PlayerControls()
     {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""PlayerControls"",
@@ -476,7 +477,6 @@ public class PlayerControls : IInputActionCollection
     ""controlSchemes"": [
         {
             ""name"": ""PC"",
-            ""basedOn"": """",
             ""bindingGroup"": ""PC"",
             ""devices"": [
                 {
@@ -493,7 +493,6 @@ public class PlayerControls : IInputActionCollection
         },
         {
             ""name"": ""Gamepad"",
-            ""basedOn"": """",
             ""bindingGroup"": ""Gamepad"",
             ""devices"": [
                 {
@@ -506,22 +505,22 @@ public class PlayerControls : IInputActionCollection
     ]
 }");
         // Gameplay
-        m_Gameplay = asset.GetActionMap("Gameplay");
-        m_Gameplay_Move = m_Gameplay.GetAction("Move");
-        m_Gameplay_Interact = m_Gameplay.GetAction("Interact");
-        m_Gameplay_Pause = m_Gameplay.GetAction("Pause");
-        m_Gameplay_Attack = m_Gameplay.GetAction("Attack");
-        m_Gameplay_Roll = m_Gameplay.GetAction("Roll");
+        m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
+        m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
+        m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
+        m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
+        m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
+        m_Gameplay_Roll = m_Gameplay.FindAction("Roll", throwIfNotFound: true);
         // Grounded
-        m_Grounded = asset.GetActionMap("Grounded");
-        m_Grounded_Move = m_Grounded.GetAction("Move");
-        m_Grounded_Look = m_Grounded.GetAction("Look");
-        m_Grounded_CaptureMouse = m_Grounded.GetAction("CaptureMouse");
-        m_Grounded_ReleaseMouse = m_Grounded.GetAction("ReleaseMouse");
-        m_Grounded_Interact = m_Grounded.GetAction("Interact");
+        m_Grounded = asset.FindActionMap("Grounded", throwIfNotFound: true);
+        m_Grounded_Move = m_Grounded.FindAction("Move", throwIfNotFound: true);
+        m_Grounded_Look = m_Grounded.FindAction("Look", throwIfNotFound: true);
+        m_Grounded_CaptureMouse = m_Grounded.FindAction("CaptureMouse", throwIfNotFound: true);
+        m_Grounded_ReleaseMouse = m_Grounded.FindAction("ReleaseMouse", throwIfNotFound: true);
+        m_Grounded_Interact = m_Grounded.FindAction("Interact", throwIfNotFound: true);
     }
 
-    ~PlayerControls()
+    public void Dispose()
     {
         UnityEngine.Object.Destroy(asset);
     }
@@ -575,8 +574,8 @@ public class PlayerControls : IInputActionCollection
     private readonly InputAction m_Gameplay_Roll;
     public struct GameplayActions
     {
-        private PlayerControls m_Wrapper;
-        public GameplayActions(PlayerControls wrapper) { m_Wrapper = wrapper; }
+        private @PlayerControls m_Wrapper;
+        public GameplayActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
@@ -591,40 +590,40 @@ public class PlayerControls : IInputActionCollection
         {
             if (m_Wrapper.m_GameplayActionsCallbackInterface != null)
             {
-                Move.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
-                Move.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
-                Move.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
-                Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
-                Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
-                Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
-                Pause.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
-                Pause.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
-                Pause.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
-                Attack.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
-                Attack.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
-                Attack.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
-                Roll.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRoll;
-                Roll.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRoll;
-                Roll.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRoll;
+                @Move.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
+                @Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Pause.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
+                @Attack.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
+                @Attack.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
+                @Attack.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
+                @Roll.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRoll;
+                @Roll.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRoll;
+                @Roll.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRoll;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
             {
-                Move.started += instance.OnMove;
-                Move.performed += instance.OnMove;
-                Move.canceled += instance.OnMove;
-                Interact.started += instance.OnInteract;
-                Interact.performed += instance.OnInteract;
-                Interact.canceled += instance.OnInteract;
-                Pause.started += instance.OnPause;
-                Pause.performed += instance.OnPause;
-                Pause.canceled += instance.OnPause;
-                Attack.started += instance.OnAttack;
-                Attack.performed += instance.OnAttack;
-                Attack.canceled += instance.OnAttack;
-                Roll.started += instance.OnRoll;
-                Roll.performed += instance.OnRoll;
-                Roll.canceled += instance.OnRoll;
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+                @Attack.started += instance.OnAttack;
+                @Attack.performed += instance.OnAttack;
+                @Attack.canceled += instance.OnAttack;
+                @Roll.started += instance.OnRoll;
+                @Roll.performed += instance.OnRoll;
+                @Roll.canceled += instance.OnRoll;
             }
         }
     }
@@ -640,8 +639,8 @@ public class PlayerControls : IInputActionCollection
     private readonly InputAction m_Grounded_Interact;
     public struct GroundedActions
     {
-        private PlayerControls m_Wrapper;
-        public GroundedActions(PlayerControls wrapper) { m_Wrapper = wrapper; }
+        private @PlayerControls m_Wrapper;
+        public GroundedActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Grounded_Move;
         public InputAction @Look => m_Wrapper.m_Grounded_Look;
         public InputAction @CaptureMouse => m_Wrapper.m_Grounded_CaptureMouse;
@@ -656,40 +655,40 @@ public class PlayerControls : IInputActionCollection
         {
             if (m_Wrapper.m_GroundedActionsCallbackInterface != null)
             {
-                Move.started -= m_Wrapper.m_GroundedActionsCallbackInterface.OnMove;
-                Move.performed -= m_Wrapper.m_GroundedActionsCallbackInterface.OnMove;
-                Move.canceled -= m_Wrapper.m_GroundedActionsCallbackInterface.OnMove;
-                Look.started -= m_Wrapper.m_GroundedActionsCallbackInterface.OnLook;
-                Look.performed -= m_Wrapper.m_GroundedActionsCallbackInterface.OnLook;
-                Look.canceled -= m_Wrapper.m_GroundedActionsCallbackInterface.OnLook;
-                CaptureMouse.started -= m_Wrapper.m_GroundedActionsCallbackInterface.OnCaptureMouse;
-                CaptureMouse.performed -= m_Wrapper.m_GroundedActionsCallbackInterface.OnCaptureMouse;
-                CaptureMouse.canceled -= m_Wrapper.m_GroundedActionsCallbackInterface.OnCaptureMouse;
-                ReleaseMouse.started -= m_Wrapper.m_GroundedActionsCallbackInterface.OnReleaseMouse;
-                ReleaseMouse.performed -= m_Wrapper.m_GroundedActionsCallbackInterface.OnReleaseMouse;
-                ReleaseMouse.canceled -= m_Wrapper.m_GroundedActionsCallbackInterface.OnReleaseMouse;
-                Interact.started -= m_Wrapper.m_GroundedActionsCallbackInterface.OnInteract;
-                Interact.performed -= m_Wrapper.m_GroundedActionsCallbackInterface.OnInteract;
-                Interact.canceled -= m_Wrapper.m_GroundedActionsCallbackInterface.OnInteract;
+                @Move.started -= m_Wrapper.m_GroundedActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_GroundedActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_GroundedActionsCallbackInterface.OnMove;
+                @Look.started -= m_Wrapper.m_GroundedActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_GroundedActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_GroundedActionsCallbackInterface.OnLook;
+                @CaptureMouse.started -= m_Wrapper.m_GroundedActionsCallbackInterface.OnCaptureMouse;
+                @CaptureMouse.performed -= m_Wrapper.m_GroundedActionsCallbackInterface.OnCaptureMouse;
+                @CaptureMouse.canceled -= m_Wrapper.m_GroundedActionsCallbackInterface.OnCaptureMouse;
+                @ReleaseMouse.started -= m_Wrapper.m_GroundedActionsCallbackInterface.OnReleaseMouse;
+                @ReleaseMouse.performed -= m_Wrapper.m_GroundedActionsCallbackInterface.OnReleaseMouse;
+                @ReleaseMouse.canceled -= m_Wrapper.m_GroundedActionsCallbackInterface.OnReleaseMouse;
+                @Interact.started -= m_Wrapper.m_GroundedActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_GroundedActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_GroundedActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_GroundedActionsCallbackInterface = instance;
             if (instance != null)
             {
-                Move.started += instance.OnMove;
-                Move.performed += instance.OnMove;
-                Move.canceled += instance.OnMove;
-                Look.started += instance.OnLook;
-                Look.performed += instance.OnLook;
-                Look.canceled += instance.OnLook;
-                CaptureMouse.started += instance.OnCaptureMouse;
-                CaptureMouse.performed += instance.OnCaptureMouse;
-                CaptureMouse.canceled += instance.OnCaptureMouse;
-                ReleaseMouse.started += instance.OnReleaseMouse;
-                ReleaseMouse.performed += instance.OnReleaseMouse;
-                ReleaseMouse.canceled += instance.OnReleaseMouse;
-                Interact.started += instance.OnInteract;
-                Interact.performed += instance.OnInteract;
-                Interact.canceled += instance.OnInteract;
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
+                @CaptureMouse.started += instance.OnCaptureMouse;
+                @CaptureMouse.performed += instance.OnCaptureMouse;
+                @CaptureMouse.canceled += instance.OnCaptureMouse;
+                @ReleaseMouse.started += instance.OnReleaseMouse;
+                @ReleaseMouse.performed += instance.OnReleaseMouse;
+                @ReleaseMouse.canceled += instance.OnReleaseMouse;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -699,7 +698,7 @@ public class PlayerControls : IInputActionCollection
     {
         get
         {
-            if (m_PCSchemeIndex == -1) m_PCSchemeIndex = asset.GetControlSchemeIndex("PC");
+            if (m_PCSchemeIndex == -1) m_PCSchemeIndex = asset.FindControlSchemeIndex("PC");
             return asset.controlSchemes[m_PCSchemeIndex];
         }
     }
@@ -708,7 +707,7 @@ public class PlayerControls : IInputActionCollection
     {
         get
         {
-            if (m_GamepadSchemeIndex == -1) m_GamepadSchemeIndex = asset.GetControlSchemeIndex("Gamepad");
+            if (m_GamepadSchemeIndex == -1) m_GamepadSchemeIndex = asset.FindControlSchemeIndex("Gamepad");
             return asset.controlSchemes[m_GamepadSchemeIndex];
         }
     }
